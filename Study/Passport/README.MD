@@ -72,3 +72,110 @@ app.get('/login', function(req, res, next) {
     })(req, res, next);
 });
 ```
+
+## Configure
+Passport를 사용하연 인증을 수행하려면 `세 가지`의 설정이 필요합니다.
+1. Authentication strategies
+2. Application middleware
+3. Sessions (optional)
+
+### Strategies
+- Strategy에는 `사용자 이름과 비밀번호 확인`, `OAuth`를 사용한 인증 위임 또는 `OpenID`를 사용한 연합 인증이 존재한다.
+- **`Passport을 사용하여 인증 요청을 수행하기 전에 Application에서 사용하려는 Strategy를 설정해야한다.`**
+```javascript
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        User.findOne({ username: username }, function (err, user) {
+            if (err)
+                return done(err);
+            if (!user)
+                return done(null, false, { message: 'Incorrect username.' });
+            if (!user.validPassword(password))
+                return done(null, false, { message: 'Incorrect password.' });
+            return done(null, user);
+        });
+    }
+));
+```
+
+### Verify Callback
+- Strategy는 `Verify Callback`이 필요하다.
+- Verify callback의 목적은 자격 증명이 있는 사용자를 찾는 것입니다.
+- Passport가 요청을 인증할 때, 요청안에 포함된 자격 증명을 분석합니다.
+- 그 후 해당 자격 증명 (usrname, password)을 사용하여 `Verify callback`을 호출합니다.
+- 자격 증명이 유효하면 `Verify callback`은 done()을 호출하여 Passport에 인증된 사용자를 제공합니다.
+    ```javascript
+    return done(null, user);
+    ```
+
+#### 자격 증명이 유효하지 않은 경우1 (예 : 암호가 틀린 경우)
+- 인증 실패를 나타 내기 위해 사용자 대신 false로 done을 호출해야합니다.
+    ```javascript
+    return done(null, false);
+    ```
+
+#### 자격 증명이 유효하지 않은 경우2
+오류의 원인을 표시하기 위해 추가 정보 메시지를 제공 할 수 있습니다. 사용자에게 다시 시도하라는 `Flash Message`를 표시 할 때 유용합니다.
+
+```javascript
+return done(null, false, { message: 'Incorrect password.' });
+```
+
+#### 자격 증명을 확인하는 동안 예외가 발생하는 경우 (예 : 데이터베이스를 사용할 수없는 경우)
+Node.js의 error와 함께 done을 호출해야합니다.
+```javascript
+return done(err);
+```
+
+### Middleware
+* Express에서 Passport를 초기화하려면 `passport.initialize() Middleware`가 필요하다.
+* Application이 지속적 Login Session을 사용하는 경우 `passport.session() Middleware`도 함께 사용해야한다.
+* **[중요] Session이 활성화 된 경우 `passport.session()` 전에 `session()`을 사용하여 로그인 session이 올바른 순서로 복원되는지 확인해야한다.**
+    ```javascript
+    app.configure(function() {
+        app.use(express.static('public'));
+        app.use(express.cookieParser());
+        app.use(express.bodyParser());
+        app.use(express.session({ secret: 'keyboard cat' }));
+        app.use(passport.initialize());
+        app.use(passport.session());
+        app.use(app.router);
+    });
+    ```
+* Express 4.x부터는 Connect middleware가 Express core에 포함되어있지 않으므로 **`express-session module`** 을 사용해야 한다.
+    ```javascript
+    //  [주의] Express-Session을 사용해야 한다.
+    var session = require("express-session");
+    var bodyParser = require("body-parser");
+
+    app.use(express.static("public"));
+    //  Express Session 설정
+    app.use(session({ secret: "cats" }));
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(passport.initialize());
+    //  Passport Session 설정
+    app.use(passport.session());
+    ```
+
+### Sessions
+* 일반적인 Web Application에서 사용자 인증에 사용되는 자격 증명은 로그인 요청 중에만 전송됩니다.
+* 인증이 성공하면 사용자의 브라우저에 설정된 쿠키를 통해 세션이 설정되고 유지 관리됩니다.
+* 이후의 각 요청에는 자격 증명이 포함되지 않고 세션을 식별하는 고유 쿠키가 포함됩니다.
+* 로그인 session을 지원하기 위해 Passport는 session간에 **`user instances`** 를 **`직렬화 (Serialize)`** 및 **`역직렬화 (Deserialize)`** 합니다.
+    ```javascript
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
+    });
+    ```
+    * 이 예제에서는 `user ID`만 `Session`에 직렬화하여 Session에 저장된 데이터의 양을 적게 유지하였습니다.
+    * 요청을 받으면 이 ID를 사용하여 사용자를 찾은 다음 req.user에 복원합니다.
+    * 직렬화 및 역직렬화 개념이 Application에 의해서 제공되므로, Application에서 인증 계층의 도입 없이 적절한 데이터베이스 및 객체 매퍼 (Object Mapper)를 선택할 수 있습니다.
