@@ -7,3 +7,4 @@
   console.log("User Input Password");
   console.log("[SHA-512 Hash]");
   console.log(hash.digest('base64'));
+  
