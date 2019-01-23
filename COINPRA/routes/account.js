@@ -26,7 +26,7 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/signin', function(req, res, next) {
-    res.render('login', { title: 'Express' });
+    res.render('signin', { title: 'Express' });
 });
 
 router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin' }));
