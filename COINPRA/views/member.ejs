@@ -1,0 +1,53 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="/stylesheets/manager.css" />-->
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="col-sm-2">
+        <nav class="nav-sidebar">
+            <ul class="nav nav-pills nav-stacked">
+                <!--TODO: JUNGEE: 왜 이동안되는지 파악 후, 수정 -->
+                <li class="active"><a href="/" data-toggle="tab">회원정보</a></li>
+                <li class=""><a href="deposit" data-toggle="tab">임금대기</a></li>
+                <li class=""><a href="sales" data-toggle="tab">판매완료 내역</a></li>
+                <li class=""><a href="addsales" data-toggle="tab">판매누적액</a></li>
+                <li class=""><a href="managermenu" data-toggle="tab">관리자 메뉴</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="col-sm-8">
+    <!-- tab content -->
+    <div class="tab-content">
+        <div class="tab-pane active text-style">
+            <h2>회원정보</h2>
+            <table class="table">
+               <tr>
+                   <th>회원넘버</th>
+                   <th>이름</th>
+                   <th>아이디</th>
+                   <th>전화번호</th>
+                   <th>PLU 수량</th>
+                   <th>FNB 수량</th>
+               </tr>
+                <tr>
+                    <td><%= member.id %></td>
+                    <td><%= member.name %></td>
+                    <td><%= member.email %></td>
+                    <td><%= member.phone %></td>
+                    <td><%= member.plu %></td>
+                    <td><%= member.fnb %></td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+    </div>
+
+
+</div>

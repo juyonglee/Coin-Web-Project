@@ -1,0 +1,56 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <div class="col-sm-2">
+        <nav class="nav-sidebar">
+           <ul class="nav nav-pills nav-stacked">
+                <li ><a href="member" data-toggle="tab">회원정보</a></li>
+                              <li class="active"><a href="/" data-toggle="tab">임금대기</a></li>
+                              <li class=""><a href="sales" data-toggle="tab">판매완료 내역</a></li>
+                              <li class=""><a href="addsales" data-toggle="tab">판매누적액</a></li>
+                              <li class=""><a href="managermenu" data-toggle="tab">관리자 메뉴</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="col-sm-8">
+    <!-- tab content -->
+    <div class="tab-content">
+        <div class="tab-pane text-style" >
+                   <h2>임금대기</h2>
+                   <table class="table">
+                       <tr>
+                           <th>주문번호</th>
+                           <th>구매일시</th>
+                           <th>회원넘버</th>
+                           <th>이름</th>
+                           <th>종류</th>
+                           <th>수량</th>
+                           <th>금액</th>
+                           <th>처리상태</th>
+                           <th>수정</th>
+                       </tr>
+                       <tr>
+                           <td><%= deposit.id %></td>
+                           <td><%= deposit.date %></td>
+                           <td><%= deposit.user_id %></td>
+                           <td><%= deposit.name %></td>
+                           <td><%= deposit.kinds %></td>
+                           <td><%= deposit.num %></td>
+                           <td><%= deposit.price %></td>
+                           <td><%= deposit.status %></td>
+                           <td></td>
+
+                       </tr>
+                   </table>
+               </div>
+
+    </div>
+    </div>
+
+
+</div>
