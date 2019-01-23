@@ -10,8 +10,9 @@ var LocalStrategy = require('passport-local').Strategy;
 
 //  MongoDB 
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise; 
 var mongoUrl = 'mongodb://localhost:27017/PROJECT';
-mongoose.connect(mongoUrl, {useMongoClient: true});
+mongoose.connect(mongoUrl, {useNewUrlParser: true, useCreateIndex: true});
 var db = mongoose.connection;
 db.once('open', function(){
   console.log("MongoDB Connection!");
