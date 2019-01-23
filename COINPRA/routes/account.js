@@ -12,7 +12,8 @@ router.post('/signup', function(req, res, next) {
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
         Account.create({ username : req.body.username, salt:buf.toString('base64'), phone: req.body.phoneNumber, password: derivedKey.toString('base64'), name: req.body.name}).then(
-            function(product) {
+            function() {
+                console.log("저장");
                 passport.authenticate('local')(req, res, function () {
                     res.redirect('/');
                 });
