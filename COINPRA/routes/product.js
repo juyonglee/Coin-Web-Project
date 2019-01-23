@@ -8,12 +8,14 @@ router.get('/fnbCreate', function(req, res, next) {
         price: 100,
         total_count: 20000000,
         selling_count: 0}).then(
-            (a)=>{
+            (result)=>{
                 console.log("저장");
-                console.log(a);
+
+                res.redirect('/');  
             },
             (err)=>{
                 console.log(err);
+                res.redirect('/');
             }
         )}
 );
