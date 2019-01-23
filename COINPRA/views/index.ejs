@@ -7,5 +7,20 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <form method="GET" action="/account/signup">
+      <input type="submit" value="회원가입">
+    </form>
+
+    <form method="GET" action="/account/changePassword">
+      <input type="submit" value="비밀번호 변경">
+    </form>
+
+    <form method="GET" action="/account/logout">
+      <input type="submit" value="Logout">
+    </form>
+
+    <form method="GET" action="/account/signin">
+      <input type="submit" value="Login">
+    </form>
   </body>
 </html>
