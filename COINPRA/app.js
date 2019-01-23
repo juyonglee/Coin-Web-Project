@@ -10,8 +10,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 //  MongoDB 
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise; 
-var AutoIncrement = require('mongoose-sequence')(mongoose);
 var mongoUrl = 'mongodb://localhost:27017/PROJECT';
 mongoose.connect(mongoUrl, {useMongoClient: true});
 var db = mongoose.connection;
@@ -63,7 +61,7 @@ passport.use(new LocalStrategy(function(username, password, done){
     if(userObject) {
       const crypto = require('crypto');
       crypto.pbkdf2(password, userObject.salt, 100000, 64, 'sha512', function(err, derivedKey) {
-        if(userObject.password != derivedKey.toString('base64')) return done(null, false, {message: "Pasword가 일치하지 않습니다."});
+        if(userObject.password != derivedKey.toString('base64')) return done(null, false, {message: "Password가 일치하지 않습니다."});
         return done(null, userObject);
       });
     }

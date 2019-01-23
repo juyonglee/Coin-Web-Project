@@ -11,16 +11,14 @@ router.get('/signup', function(req, res, next) {
 router.post('/signup', function(req, res, next) {
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
-            if (err) throw err;
-            var account = new Account({ username : req.body.username, salt:buf.toString('base64'), phone: req.body.phoneNumber, password: derivedKey.toString('base64'), name: req.body.name});
-            account.save(function(err, product){
-                if (err) {
-                    onsole.log("이미 가입된 회원입니다.");
-                    res.redirect('/');
-                }
+        Account.create({ username : req.body.username, salt:buf.toString('base64'), phone: req.body.phoneNumber, password: derivedKey.toString('base64'), name: req.body.name}).then(
+            function(product) {
                 passport.authenticate('local')(req, res, function () {
                     res.redirect('/');
                 });
+            }, function(err) {
+                console.log("이미 가입된 회원입니다.");
+                res.redirect('/');
             });
         });
     });
