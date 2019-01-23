@@ -8,7 +8,10 @@ var Account = new Schema({
     salt: String,
     password: String,
     phone: String,
-    seq: Number
+    seq: Number,
+    my_PLU: { type: Number, default: 0 },
+    FNB: Number,
+    buy_info: [mongoose.Schema.Types.ObjectId]
 });
 
 Account.plugin(sequenceGenerator, {startAt: 135001});

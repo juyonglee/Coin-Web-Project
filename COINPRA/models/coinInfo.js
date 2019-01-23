@@ -2,24 +2,13 @@ var mongoose = require('mongoose');
 var CoinScheme = require('./coin');
 var Schema = mongoose.Schema;
 
-var Coin = new Schema({
-    round: Number,
+var SellingInfo = new Schema({
     coin_name: String,
     price: Number,
-    total_count: Number,
-    selling_count: Number
+    buy_count: Number,
+    buy_state: Boolean,
+    buy_date: { type: Date, default: Date.now },
+    buyer: [mongoose.Schema.Types.ObjectId]
 });
 
-var CoinInfo = new Schema({
-    // fnbCoinsList: [{
-    //     round: Number,
-    //     coin_name: String,
-    //     price: Number,
-    //     total_count: Number,
-    //     selling_count: Number
-    // }],
-    fnbCoinList: [Coin],
-    pluConinsList: [Coin]
-});
-
-module.exports = mongoose.model('CoinInfo', CoinInfo);
+module.exports = mongoose.model('SellInfo', SellingInfo);
