@@ -53,6 +53,32 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/account', accountRouter);
 
+//  Passport Configure
+passport.use(new LocalStrategy(function(username, password, done){
+  Account.findOne({username:username}, function(err, userObject){
+    if(err) {
+      console.log(err);
+      return done(null, false, {message: "사용자가 존재하지 않습니다."});
+    }
+    if(userObject) {
+      const crypto = require('crypto');
+      crypto.pbkdf2(password, userObject.salt, 100000, 64, 'sha512', function(err, derivedKey) {
+        if(userObject.password != derivedKey.toString('base64')) return done(null, false, {message: "Pasword가 일치하지 않습니다."});
+        return done(null, userObject);
+      });
+    }
+  });
+}));
+
+//  Passport Sesssion Message
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
