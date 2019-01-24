@@ -37,19 +37,17 @@
                   <thead>
                     <tr>
                         <th>누적입금액</th>
-                        <th>누적 PLU 판매수량</th>
+                        <th>누적 TOXI 판매수량</th>
                         <th>누적 FNB 판매수량 </th>
                     </tr>
                   </thead>
                   
                   <tbody>
-                        <% for(var i=0; i<addsales.length; i++) {%>
-                            <tr>
-                                <td><%= addsales[i].pricenum %></td>
-                                <td><%= addsales[i].plunum %></td>
-                                <td><%= addsales[i].fnbnum %></td>
-                            </tr>
-                        <% } %>
+                        <tr>
+                            <td><%= addsales['TOXI_PRICE'] + addsales['PLU_PRICE'] + "원"%></td>
+                            <td><%= addsales['TOXI_COUNT'] + "개" %></td>
+                            <td><%= addsales['PLU_COUNT'] + "개"%></td>
+                        </tr>
                   </tbody>
                 </table>
               </div>
