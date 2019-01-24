@@ -44,7 +44,8 @@
                         <th>수량</th>
                         <th>금액</th>
                         <th>처리상태</th>
-                        <th>수정</th>
+                        <th>입금확인</th>
+                        <th>구매취소</th>
                     </tr>
                   </thead>
                   
@@ -63,6 +64,11 @@
                                 <form action="/manager/depositConfirm/<%=deposit[i]._id%>" method="POST">
                                     <input type="datetime-local" name="incomingDate" min="2019-01-01T00:00" max="2200-12-31T00:00" required>
                                     <input type="submit" value="입금확인">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/manager/depositDelete/<%=deposit[i]._id%>" method="POST">
+                                    <input type="submit" value="취소">
                                 </form>
                             </td>
                         </tr>        

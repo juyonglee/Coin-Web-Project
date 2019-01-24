@@ -45,9 +45,6 @@ router.post('/toxiPurchase', function(req, res, next) {
                 buyInfo.create({coin_name: product.coin_name, price: req.body.buy_count * product.price, buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
                     (result)=> {
                         //  사용자 판매기록
-                        var userTotalCount = parseInt(req.body.buy_count) + parseInt(req.user.my_TOXI);
-                        console.log(userTotalCount);
-                        console.log(typeof(userTotalCount));
                         //  구매 후 개수 올리면 안됨!! -> 입금 후 개수 증가~
                         // Account.update({username:req.user.username}, {$inc: {my_TOXI: req.body.buy_count}, $push: {buy_info:result.id}}).then(
                         Account.update({username:req.user.username}, {$push: {buy_info:result.id}}).then( 
@@ -79,7 +76,39 @@ router.post('/toxiPurchase', function(req, res, next) {
 });
 
 router.post('/pluPurchase', function(req, res, next) {
-    
+    coinProduct.findOne({coin_name:'PLU'}).then(
+        (product)=>{
+            if(product.total_count >= req.body.buy_count) {
+                console.log("구매 가능");
+                //  구매내역 생성
+                buyInfo.create({coin_name: product.coin_name, price: req.body.buy_count * product.price, buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
+                    (result)=> {
+                        Account.update({username:req.user.username}, {$push: {buy_info:result.id}}).then( 
+                            (result)=>{
+                                console.log("구매 성공!");
+                                res.redirect('/');
+                            },
+                            (err)=>{
+                                console.log("구매 Error");
+                                res.redirect('/');
+                            }
+                        )
+                    },
+                    (err)=> {
+                        console.log("구매 실패!");
+                        console.log(err);
+                        res.redirect('/');
+                    }
+                );
+            } else {
+                console.log("수량이 부족합니다.");
+            }
+        },
+        (err)=>{
+            console.log(err);
+            next(err);
+        }
+    );
 });
 
 module.exports = router;
