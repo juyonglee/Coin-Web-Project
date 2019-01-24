@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var sequenceGenerator = require('mongoose-sequence-plugin');
+var SellInfo = require('./buyInfo');
 
-var Account = new Schema({
+var AccountScheme = new Schema({
     username: { type : String , unique : true},
     name: String,
     salt: String,
@@ -10,10 +11,9 @@ var Account = new Schema({
     phone: String,
     seq: Number,
     my_PLU: { type: Number, default: 0 },
-    FNB: Number,
-    buy_info: [mongoose.Schema.Types.ObjectId]
+    my_TOXI: { type: Number, default: 0 },
+    buy_info: [{type: mongoose.Schema.Types.ObjectId, ref: SellInfo}]
 });
 
-Account.plugin(sequenceGenerator, {startAt: 135001});
-
-module.exports = mongoose.model('Account', Account);
+AccountScheme.plugin(sequenceGenerator, {startAt: 135001});
+module.exports = mongoose.model('Account', AccountScheme);
