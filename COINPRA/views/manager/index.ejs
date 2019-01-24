@@ -30,25 +30,31 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              판매누적액</div>
+              회원목록</div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>누적입금액</th>
-                        <th>누적 PLU 판매수량</th>
-                        <th>누적 FNB 판매수량 </th>
+                      <th>회원넘버</th>
+                      <th>이름</th>
+                      <th>아이디</th>
+                      <th>전화번호</th>
+                      <th>PLU 수량</th>
+                      <th>TOXI 수량</th>
                     </tr>
                   </thead>
-                  
+      
                   <tbody>
-                        <% for(var i=0; i<addsales.length; i++) {%>
-                            <tr>
-                                <td><%= addsales[i].pricenum %></td>
-                                <td><%= addsales[i].plunum %></td>
-                                <td><%= addsales[i].fnbnum %></td>
-                            </tr>
+                      <% for (var i = 0; i < member.length; i++) { %>
+                        <tr>
+                            <td><%= member[i].sequence %></td>
+                            <td><%= member[i].name %></td>
+                            <td><%= member[i].username %></td>
+                            <td><%= member[i].phone %></td>
+                            <td><%= member[i].my_PLU %></td>
+                            <td><%= member[i].my_TOXI %></td>
+                        </tr>
                         <% } %>
                   </tbody>
                 </table>
