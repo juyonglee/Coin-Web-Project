@@ -32,16 +32,18 @@
                    <th>아이디</th>
                    <th>전화번호</th>
                    <th>PLU 수량</th>
-                   <th>FNB 수량</th>
+                   <th>TOXI 수량</th>
                </tr>
+               <% for (var i = 0; i < member.length; i++) { %>
                 <tr>
-                    <td><%= member.id %></td>
-                    <td><%= member.name %></td>
-                    <td><%= member.email %></td>
-                    <td><%= member.phone %></td>
-                    <td><%= member.plu %></td>
-                    <td><%= member.fnb %></td>
+                    <td><%= member[i].sequence %></td>
+                    <td><%= member[i].name %></td>
+                    <td><%= member[i].username %></td>
+                    <td><%= member[i].phone %></td>
+                    <td><%= member[i].my_FNB %></td>
+                    <td><%= member[i].my_PLU %></td>
                 </tr>
+                <% } %>
             </table>
 
         </div>

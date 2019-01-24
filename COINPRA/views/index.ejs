@@ -22,15 +22,24 @@
       <input type="submit" value="Login">
     </form>
 
-    <form method="POST" action="/product/fnbPurchase">
+    <form method="GET" action="/product/toxiCreate">
+      <input type="submit" value="toxiCreate">
+    </form>
+
+    <form method="GET" action="/product/pluCreate">
+      <input type="submit" value="pluCreate">
+    </form>
+
+    <form method="POST" action="/product/toxiPurchase">
       주문수량:<input type="text" name="buy_count" value="10">
-      <input type="submit" value="FNG Purchase">
+      <input type="submit" value="toxi Purchase">
     </form>
 
     <form method="POST" action="/product/pluPurchase">
       주문수량:<input type="text" name="buy_count" value="20">
       <input type="submit" value="PLU Purchase">
-      
+    </form>
+    
     <form method="GET" action="/manager/member">
       <input type="submit" value="manager">
     </form>

@@ -34,14 +34,17 @@
                    <th>금액</th>
                    <th>처리상태</th>
                </tr>
+               <% for(var i=0; i<sales.length; i++) {%>
                 <tr>
-                    <td><%= sales.date %></td>
-                    <td><%= sales.user_id %></td>
-                    <td><%= sales.name %></td>
-                    <td><%= sales.kinds %></td>
-                    <td><%= sales.num %></td>
-                    <td><%= sales.status %></td>
+                    <td><%= sales[i].buy_date %></td>
+                    <td><%= sales[i].buyer.sequence %></td>
+                    <td><%= sales[i].buyer.name %></td>
+                    <td><%= sales[i].coin_name %></td>
+                    <td><%= sales[i].buy_count %></td>
+                    <td><%= sales[i].price %></td>
+                    <td>입금완료</td>
                 </tr>
+                <% } %>
             </table>
 
         </div>

@@ -31,7 +31,8 @@ var managerRouter = require('./routes/manager');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Array 형식으로 view search 범위를 추가
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/manager')]);
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
