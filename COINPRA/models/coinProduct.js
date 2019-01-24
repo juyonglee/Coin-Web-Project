@@ -8,6 +8,7 @@ var publishedCoin = new Schema({
     price: Number,
     total_count: Number,
     selling_count: Number,
+    selling_price: Number,
     order_buyer: [{type: mongoose.Schema.Types.ObjectId, ref: Account}]
 });
 
