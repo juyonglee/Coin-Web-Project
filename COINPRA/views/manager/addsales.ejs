@@ -1,1 +1,60 @@
-<!--TODO: JUNGEE: 페이지 만들기 -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/manager.css" />
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="col-sm-2">
+
+        <!--TODO: JUNGEE: 왜 이동안되는지 파악 후, 수정 -->
+
+        <form method="GET" action="/manager/member">
+            <input type="submit" value="회원정보"></input>
+        </form>
+
+        <form method="GET" action="/manager/deposits">
+            <input type="submit" value="임금대기" ></input>
+        </form>
+        <form method="GET" action="/manager/sales">
+            <input type="submit" value="판매완료내역" ></input>
+        </form>
+        <form method="GET" action="/manager/addsales">
+            <input type="submit" value="판매누적액" ></input>
+        </form>
+        <form method="GET" action="/manager/managermenu">
+            <input type="submit" value="관리자 메뉴" ></input>
+        </form>
+
+
+
+    </div>
+    <div class="col-sm-8">
+        <!-- tab content -->
+        <div class="tab-content">
+            <div class="tab-pane active text-style">
+                <h2>판매누적액 </h2>
+                <table class="table">
+                    <tr>
+                        <th>누적입금액</th>
+                        <th>누적 PLU 판매수량</th>
+                        <th>누적 FNB 판매수량 </th>
+                    </tr>
+                    <% for(var i=0; i<addsales.length; i++) {%>
+                        <tr>
+                            <td><%= addsales[i].pricenum %></td>
+                            <td><%= addsales[i].plunum %></td>
+                            <td><%= addsales[i].fnbnum %></td>
+                        </tr>
+                    <% } %>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

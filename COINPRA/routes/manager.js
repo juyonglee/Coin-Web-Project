@@ -20,15 +20,15 @@ router.get('/member', function(req, res, next) {
     });
 });
 
-router.get('/deposit', function(req, res, next) {
+router.get('/deposits', function(req, res, next) {
     BuyInfo.find({buy_state: false}).populate({path:'buyer', model:Account}).exec((err, infos)=>{
         if(err){
-            console.log('router.get(/deposit, function(req, res, next)');
+            console.log('router.get(/deposits, function(req, res, next)');
             console.log(err);
             next(err);
         }
         console.log(infos);
-        res.render(`deposit`, { deposit: infos});
+        res.render(`deposits`, { deposit: infos});
     });
 });
 
@@ -40,12 +40,12 @@ router.get('/sales', function(req, res, next) {
 });
 
 router.get('/addsales', function(req, res, next) {
-    const addsales ={id: 0, date: 0, user_id: 0, name: "jung", kinds:"FNB", num: 2, price: 2000, status: "w"};
-    res.render('addsales', { addsales: addsales});
+    const addsalesInfos ={pricenum: 0, plunum: 0, fnbnum: 1};
+    res.render('addsales', { addsales: addsalesInfos});
 });
 
 router.get('/managermenu', function(req, res, next) {
-    const menu ={id: 0, date: 0, user_id: 0, name: "jung", kinds:"FNB", num: 2, price: 2000, status: "w"};
-    res.render('menu', { menu: menu});
+    const menuInfo ={id: 0, date: 0, user_id: 0, name: "jung", kinds:"FNB", num: 2, price: 2000, status: "w"};
+    res.render('managermenu', { menu: menuInfo});
 });
 module.exports = router;

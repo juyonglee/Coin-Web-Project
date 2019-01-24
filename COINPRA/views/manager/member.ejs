@@ -8,16 +8,27 @@
 
 <div class="container">
     <div class="col-sm-2">
-        <nav class="nav-sidebar">
-            <ul class="nav nav-pills nav-stacked">
+
                 <!--TODO: JUNGEE: 왜 이동안되는지 파악 후, 수정 -->
-                <li class="active"><a href="/" data-toggle="tab">회원정보</a></li>
-                <li class=""><a href="deposit" data-toggle="tab">임금대기</a></li>
-                <li class=""><a href="sales" data-toggle="tab">판매완료 내역</a></li>
-                <li class=""><a href="addsales" data-toggle="tab">판매누적액</a></li>
-                <li class=""><a href="managermenu" data-toggle="tab">관리자 메뉴</a></li>
-            </ul>
-        </nav>
+
+                    <form method="GET" action="/manager/member">
+                        <input type="submit" value="회원정보"></input>
+                    </form>
+
+                    <form method="GET" action="/manager/deposits">
+                        <input type="submit" value="임금대기" ></input>
+                    </form>
+                <form method="GET" action="/manager/sales">
+                    <input type="submit" value="판매완료내역" ></input>
+                </form>
+                <form method="GET" action="/manager/addsales">
+                    <input type="submit" value="판매누적액" ></input>
+                </form>
+                <form method="GET" action="/manager/managermenu">
+                    <input type="submit" value="관리자 메뉴" ></input>
+                </form>
+
+
 
     </div>
     <div class="col-sm-8">
