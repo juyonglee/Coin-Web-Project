@@ -1,0 +1,122 @@
+.box{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+}
+.box:hover{ box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.box img{
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease 0s;
+}
+.box:hover img{ filter: hue-rotate(100deg); }
+.box .box-content{
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 27% 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.box:before,
+.box:after,
+.box .box-content:before,
+.box .box-content:after{
+    content: '';
+    height: 50%;
+    width: 50%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transition: all 0.5s;
+    z-index: 1;
+}
+.box:before{ transition-delay: 0.1s; }
+.box:after{
+    left: 50%;
+    transition-delay: 0.2s;
+}
+.box .box-content:before,
+.box .box-content:after{
+    z-index: -1;
+    top: 100%;
+    transition-delay: 0.3s;
+}
+.box .box-content:after{
+    left: 50%;
+    transition-delay: 0.35s;
+}
+.box:hover:before,
+.box:hover:after{
+    top: 0;
+}
+.box:hover .box-content:before,
+.box:hover .box-content:after{
+    top: 50%;
+}
+.box .title{
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    opacity: 0;
+    transform: translateX(-200px);
+    transition: all 0.3s ease 0.3s;
+}
+.box .post{
+    font-size:16px;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    opacity: 0;
+    display: block;
+    transform: translateX(-200px);
+    transition: all 0.3s ease 0.3s;
+}
+.box .icon{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+    transform: translateX(200px);
+    transition: all 0.3s ease 0.3s;
+}
+.box:hover .title,
+.box:hover .post,
+.box:hover .icon{
+    opacity: 1;
+    transform: translateX(0);
+}
+.box .icon li{
+    margin: 0 4px;
+    display: inline-block;
+}
+.box .icon li a{
+    color: #fff;
+    font-size: 18px;
+    line-height: 37px;
+    height: 40px;
+    width: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.3s;
+}
+.box .icon li a:hover{
+    background: #f39c12;
+    box-shadow: 0 0 10px #f39c12;
+}
+@media only screen and (max-width:990px){
+    .box{ margin-bottom: 30px; }
+}
+@media only screen and (max-width:479px){
+    .box .box-content{ padding: 23% 0 0; }
+}

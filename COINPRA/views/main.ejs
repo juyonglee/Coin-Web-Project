@@ -15,21 +15,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template-->
+    <link href="../stylesheets/hover-effect.css" rel="stylesheet">
     <link href="../stylesheets/progress.css" rel="stylesheet">
     <link href="../stylesheets/main.css" rel="stylesheet">
     <link href="../stylesheets/button.css" rel="stylesheet">
     <link href="../stylesheets/signup.css" rel="stylesheet">
+    <link href="../stylesheets/main_coin.css" rel="stylesheet">
 
     <script href="../javascript/main-page.js" ></script>
 </head>
 <body>
 
-<!--<div id="first_page"></div>-->
-<!--<div id="sec_page"></div>-->
-<!--<div id="third_page"></div>-->
-<!--<div id="last_page"></div>-->
 
-
+<!-- 1. 첫 페이지 -->
 <header>
     <nav>
         <div class="menu-icon">
@@ -67,24 +65,127 @@
             </div>
         </div>
     </div>
-    <div style="position: absolute; left: 50%; top:80%">
+
+
+</header>
+<!-- 2. 두번째 페이지: 코인 구매 -->
+<header id="sec_page">
+    <div style="position: absolute; left: 50%; top:110%">
         <h3 class="text-center" style="position: relative; left: -50%; color: #eeeeee">
             사전 가입하시고 IEO 참여 혜택을 누리세요!!<br>정식 OPEN 첫날 상장 됩니다.
         </h3>
     </div>
 
+    <div class="container" style="position: absolute; top:125%; width: 100%">
+        <div class="row" style="text-align:center;">
+            <div class="col-md-3 col-sm-6" >
+                <div class="serviceBox purple" style="background:  #8c8c8c; height: 270px">
+                    <div class="service-count purple">1</div>
+                    <div class="service-content">
+                        <h2>PLU 코인</h2>
+                        <h3 style="color:#7b0000">
+                           판매 완료
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="serviceBox purple" style="background:  #8c8c8c; height: 270px">
+                    <div class="service-count">2</div>
+                    <div class="service-content">
+                        <h2>PLU 코인</h2>
+                        <h3 style="color:#7b0000">
+                            판매 완료
+                        </h3>
+                    </div>
+                </div>
+                </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="serviceBox purple" style="height: 270px">
+                    <div class="service-count">3</div>
+                    <div class="service-icon">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="service-content">
+                        <h2>PLU 코인</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 ">
+                <div class="serviceBox" style="height: 270px">
+                    <div class="service-count">4</div>
+                    <div class="service-icon">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+                    <div class="service-content">
+                        <h2>FNB 코인</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute; left: 50%; top:175%">
+        <a style="position: relative; left: -50%;"   class="btn btn-lg"  data-toggle="modal" data-target="#signup-modal" >구매하러가기</a>
+    </div>
+
+
 </header>
-
-
-
-<div id="main">
-
-
-</div>
-
-<header id="sec_page"></header>
 <header id="third_page"></header>
-<header id="last_page"></header>
+
+<header id="last_page">
+    <div style="position: absolute;top:310%">
+        <div class="row">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-5 col-xs-5">
+                <div class="box">
+                    <img  src="../images/lastpage/last_1.jpeg" alt="">
+                    <div class="box-content">
+                        <h3 class="title">국내 최저 수수료로 거래하세요.</h3>
+                        <span class="post">수수료 0.1% -> 0.04% (pra코인 사용 시 60% 할인)</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-xs-5">
+                <div class="box">
+                    <img  src="../images/lastpage/last_2.jpeg" alt="">
+                    <div class="box-content">
+                        <h3 class="title">업계 최저 수수료로 많은 사용자 확보</h3>
+                        <span class="post">폭발적인 거래량을 경험해보세요.</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-xs-1"></div>
+        </div>
+        <div class="row" style="padding-top: 3%">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-5 col-xs-5"> <div class="box">
+                    <img  src="../images/lastpage/last_3.jpeg" alt="">
+                    <div class="box-content">
+                        <h3 class="title">렉 없는 쾌적한 환경을 제공합니다.</h3>
+                        <span class="post">대용량 서버 구축에 중점을 두었습니다.</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-xs-5">
+                <div class="box">
+                    <img  src="../images/lastpage/last_4.jpeg"  alt="">
+                    <div class="box-content">
+                        <h3 class="title">암호화폐 거래소 시스템 경력 7년의<br>전문가들이 보안을 책임집니다.</h3>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-xs-1"></div>
+        </div>
+    </div>
+</header>
 
 
 

@@ -1,0 +1,93 @@
+.serviceBox{
+    color: #000;
+    background-color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 20px 15px;
+    margin: 20px 0 0;
+    border-radius: 20px 0 20px 0;
+    position: relative;
+    z-index: 1;
+    transition: all ease .3s;
+}
+.serviceBox:hover{ box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+.serviceBox:before{
+    content: '';
+    background: linear-gradient(45deg,#a87508 49%,transparent 50%);
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 115px;
+    top: -15px;
+}
+.serviceBox .service-count{
+    color: #fff;
+    background: linear-gradient(135deg,#FDBB26 25%,#ffcd44 26%,#ffcd44 40%,#FDBB26 41%,#FDBB26 47%,#ffcd44 48%, #ffcd44 60%, #FDBB26 61%);
+    font-size: 60px;
+    text-align: center;
+    line-height: 130px;
+    width: 90px;
+    height: 120px;
+    margin: -35px 0 0 0;
+    display: block;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
+.serviceBox .service-icon{
+    color:#909090;
+    font-size: 60px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition: all 0.3s ease 0s;
+}
+.serviceBox:hover .service-icon{ transform: rotateY(360deg); }
+.serviceBox .service-content{ padding: 20px 0 0; }
+.serviceBox .title{
+    color: #505050;
+    font-size: 19px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+.serviceBox .description{
+    color: rgba(0,0,0,0.5);
+    font-size: 13px;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.serviceBox .read-more{
+    color:#202020;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    transition: all ease .3s;
+}
+.serviceBox .read-more:hover{
+    color: #fff;
+    text-shadow: 0 0 5px #000;
+    text-decoration: none;
+}
+.serviceBox.purple:before{
+    background: linear-gradient(45deg,#503893 49%,transparent 50%);
+}
+.serviceBox.purple .service-count{
+    background: linear-gradient(135deg,#916AF9 25%,#AF7DFF 26%, #AF7DFF 40%,#916AF9 41%, #916AF9 47%, #AF7DFF 48%, #AF7DFF 60%, #916AF9 61%);
+}
+.serviceBox.orange:before{
+    background: linear-gradient(45deg,#c16226 49%,transparent 50%);
+}
+.serviceBox.orange .service-count{
+    background: linear-gradient(135deg,#FD893E 25%,#ff9d60 26%, #ff9d60 40%,#FD893E 41%, #FD893E 47%, #ff9d60 48%, #ff9d60 60%, #FD893E 61%);
+}
+.serviceBox.blue:before{
+    background: linear-gradient(45deg,#206bbc 49%,transparent 50%);
+}
+.serviceBox.blue .service-count{
+    background: linear-gradient(135deg,#2d91ff 25%,#59a9ff 26%, #59a9ff 40%,#2d91ff 41%, #2d91ff 47%, #59a9ff 48%, #59a9ff 60%, #2d91ff 61%);
+}
+@media only screen and (max-width:990px){
+    .serviceBox{ margin: 0 0 50px; }
+}

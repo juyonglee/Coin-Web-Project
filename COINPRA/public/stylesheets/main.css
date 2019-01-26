@@ -9,14 +9,14 @@
 #third_page {
     width: 100%;
     height: 100vh;
-    background: url(/images/background/page_3_back.jpeg) no-repeat 50% 50%;
+    background: url(/images/background/pages.jpeg) no-repeat 50% 50%;
     background-size: cover;
 }
 
 #last_page {
     width: 100%;
     height: 100vh;
-    background: url(/images/background/page_4_back.jpeg) no-repeat 50% 50%;
+    background: #eeeeee;
     background-size: cover;
 }
 
