@@ -47,7 +47,8 @@
                   </thead>
                   
                   <tbody>
-                        <% for(var i=0; i<sales.length; i++) {%>
+                      <% var count = 1 %>
+                      <% for(var i=sales.length-1; i>=0; i--) {%>
                             <tr>
                                 <td><%= moment(sales[i].buy_confirm_date).format('YYYY-MM-DD hh:mm') %></td>
                                 <td><%= sales[i].buyer.sequence %></td>
