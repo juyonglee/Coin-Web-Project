@@ -1,6 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,13 +9,16 @@
     <meta name="author" content="jungee">
     <title>COIN PLACE</title>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template-->
+    <link href="../stylesheets/progress.css" rel="stylesheet">
     <link href="../stylesheets/main.css" rel="stylesheet">
     <link href="../stylesheets/button.css" rel="stylesheet">
-    <link href="../stylesheets/progress.css" rel="stylesheet">
+
     <script href="../javascript/main-page.js" ></script>
 </head>
 <body>
@@ -52,9 +53,18 @@
     <div style="position: absolute; left: 50%; top:55%">
         <a style="position: relative; left: -50%;" href="/account/signup" class="btn btn-lg">사전가입하기</a>
     </div>
-    <div style="position: absolute; left: 50%; top:70%">
-        <div id="my-progress-bar" style="position: relative; left: -50%;"  value="22" max="100"></div>
+    <!--<div style="position: absolute; left: 50%; top:70%">-->
+        <!--<div id="my-progress-bar" style="position: relative; left: -50%;"  value="22" max="100"></div>-->
 
+    <!--</div>-->
+    <div style="width:30%; height: 100%; position: absolute; left: 50%; top:70%">
+        <div style="position: relative; left: -50%;" class="progress">
+            <div class="progress-bar" style="width:85%; background:#ffd11a;"></div>
+            <div class="progress-content">
+                <span class="progress-title">진행상황</span>
+                <span class="progress-value">85%</span>
+            </div>
+        </div>
     </div>
     <div style="position: absolute; left: 50%; top:80%">
         <h3 class="text-center" style="position: relative; left: -50%; color: #eeeeee">
