@@ -50,7 +50,7 @@
     </div>
 
     <div style="position: absolute; left: 50%; top:55%">
-        <a style="position: relative; left: -50%;"   class="btn btn-lg"  data-toggle="modal" data-target="#signup-modal" >사전가입하기</a>
+        <a style="position: relative; left: -50%;"  class="btn btn-lg"  data-toggle="modal" data-target="#signupmodal" data-toggle="modal" >사전가입하기</a>
     </div>
     <!--<div style="position: absolute; left: 50%; top:70%">-->
         <!--<div id="my-progress-bar" style="position: relative; left: -50%;"  value="22" max="100"></div>-->
@@ -190,11 +190,12 @@
 
 
 <!-- 회원가입 모달 -->
-<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="signupmodal" ttabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
             <form class="form-horizontal" method="POST" action="/account/signup">
@@ -224,7 +225,10 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">핸드폰 번호</label>
                     <i class="fa fa-lock"></i>
-                    <input required="" name="phoneNumber" type="number" class="form-control" placeholder="핸드폰 번호">
+                    <input class="form-control" placeholder="010-0000-0000 형식으로 작성해주세요." type="tel" id="phone" name="phoneNumber"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           required>
+                    <!--<input required="" name="phoneNumber" type="number" >-->
 
                 </div>
                 <div class="form-group">
