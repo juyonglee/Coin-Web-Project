@@ -28,6 +28,7 @@ var accountRouter = require('./routes/account');
 var productRouter = require('./routes/product');
 var managerRouter = require('./routes/manager');
 var mainRouter = require('./routes/main');
+var salelist = require('./routes/saleList');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use('/account', accountRouter);
 app.use('/product', productRouter);
 app.use('/manager', managerRouter);
 app.use('/main', mainRouter);
+app.use('/salelist', salelist);
 
 //  Passport Configure
 passport.use(new LocalStrategy(function(username, password, done){
