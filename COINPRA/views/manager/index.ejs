@@ -7,6 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Admin - 회원정보</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+
+
     <!-- Bootstrap core CSS-->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -15,6 +20,8 @@
     <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -47,18 +54,27 @@
                   </thead>
       
                   <tbody>
+                  <!--TODO: 주용- 해당 데이터 제대로 삽입 (title value에 맞는 데이터 삽입 )-->
                       <% for (var i = 0; i < member.length; i++) { %>
                         <tr>
-                            <td><%= member[i].sequence %></td>
+                          <td><a onmouseover="detail(<%=i%>)" id ="element<%=i%>" tabindex="<%=i%>"  data-trigger="focus"
+                                 title="- 주문번호: <%= member[i].name %><br>
+                                        - 수량: <%= member[i].username %><br>
+                                        - 종류:<%= member[i].phone %><br>
+                                        - 상태: <%= member[i].phone %>">
+
+                              <%= member[i].sequence %></a></td>
                             <td><%= member[i].name %></td>
                             <td><%= member[i].username %></td>
                             <td><%= member[i].phone %></td>
                             <td><%= member[i].my_PLU + "개" %></td>
                             <td><%= member[i].my_TOXI + "개" %></td>
+
                         </tr>
                         <% } %>
                   </tbody>
                 </table>
+
               </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -126,4 +142,13 @@
     //previously active menu item
     $('#member').addClass('active');
   });
+
+  // $('#element2').popover('show');
+
+  function detail(index) {
+    $('#element'+index).tooltip({placement: "bottom", html: true})
+    // $('#element'+index).popover('show')
+
+
+  }
 </script>

@@ -50,7 +50,8 @@
                </tr>
                <% for (var i = 0; i < member.length; i++) { %>
                 <tr>
-                    <td><%= member[i].sequence %></td>
+                    <td><a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
+                            <%= member[i].sequence %></a></td>
                     <td><%= member[i].name %></td>
                     <td><%= member[i].username %></td>
                     <td><%= member[i].phone %></td>
