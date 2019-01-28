@@ -45,8 +45,18 @@
                   
                   <tbody>
                         <tr>
-                            <td><%= menu.id %></td>
-                            <td><%= menu.user_id %></td>
+                            <td>1</td>
+                            <td><%= menu.manager1 %></td>
+                            <td>
+                                <form class="form-inline">
+                                        <input value="<%= menu.user_id %>" type="text" class="form-control" id="exampleInputPassword1">
+                                        <button>수정</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><%= menu.manager2 %></td>
                             <td>
                                 <form class="form-inline">
                                         <input value="<%= menu.user_id %>" type="text" class="form-control" id="exampleInputPassword1">
@@ -58,7 +68,8 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Updated at <%= moment().format('MMMM Do YYYY, a h:mm:ss'); %></div>
+            
           </div>
 
         </div>
