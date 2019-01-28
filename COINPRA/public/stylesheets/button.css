@@ -4,6 +4,7 @@
     --color_1: linear-gradient(to right, #4b7bec 49%,#3867d6 50%);
     --color_3: linear-gradient(to right, #fd9644 49%,#fa8231 50%);
     --color_4: linear-gradient(to right, #26de81 49%,#20bf6b 50%);
+    --color_5: linear-gradient(to right, rgba(60, 62, 54, 0.61) 49%, rgba(35, 35, 36, 0.93) 50%);
 }
 .btn{
     color: var(--white);
@@ -25,6 +26,8 @@
     z-index: 1;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+
 .btn:hover{
     color: var(--white);
     text-shadow: 0 0 5px #000;
@@ -60,6 +63,7 @@
 .btn.blue{ background: var(--color_2); }
 .btn.orange{ background: var(--color_3); }
 .btn.green{ background: var(--color_4); }
+.btn.gray{ background: var(--color_5); }
 @keyframes bounce{
     40%{ transform: scale(1.1); }
     60%{ transform: scale(0.8); }
