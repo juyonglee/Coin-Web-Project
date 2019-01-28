@@ -37,7 +37,7 @@ router.get('/member', function(req, res, next) {
                 //  [유정이] - Hover로 부탁드려요!
                 var numbers = [];
                 for(var i=0; i<members.length; i++) {
-                    var phone = member[i].phone;
+                    var phone = members[i].phone;
                     var start = phone.indexOf('-');
                     var end = phone.indexOf('-', start+1);
                     var middleNumber = phone.substring(start+1, end);
