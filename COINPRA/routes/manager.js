@@ -35,8 +35,16 @@ router.get('/member', function(req, res, next) {
                 // [유정이] - Property와 변수의 이름이 같으면 문제가 생깁니다.
                 // const member ={sequence: req., name: "jungee", email: "junge2",phone:"0000", plu:0, fnb: 1};
                 //  [유정이] - Hover로 부탁드려요!
+                var numbers = [];
+                var phone = '010-9472-1232';
+                var start = phone.indexOf('-');
+                var end = phone.indexOf('-', start+1);
+                var middleNumber = phone.substring(start+1, end);
+                var replaceNumber = phone.replace(middleNumber, '****');
+                numbers.push(replaceNumber);
+                console.log(replaceNumber);
                 console.log(members);
-                res.render(`manager/index`, { member: members, moment});
+                res.render(`manager/index`, { member: members, moment, userNumbers: numbers});
             }
         }); 
     } else {

@@ -84,17 +84,18 @@
                                               <% } %>
                                           </tbody>
                                       </table>">
-                              <%= member[i].sequence %></a></td>
+                            <%= member[i].sequence %></a></td>
                             <td><%= member[i].name %></td>
                             <td><%= member[i].username %></td>
-                            <td><%= member[i].phone %></td>
+                            <!-- 클릭시  member[i].phone이 출력되어야함-->
+                            <td><a onmouseover="detail(<%=[i]%>)" id ="element<%=i%>" tabindex="<%=i%>"  data-trigger="focus"
+                              title="<%= member[i].phone %>"%></a><%= userNumbers[i]%></td>
                             <td><%= member[i].my_PLU + "개" %></td>
                             <td><%= member[i].my_TOXI + "개" %></td>
                         </tr>
                         <% } %>
                   </tbody>
                 </table>
-
               </div>
             </div>
             <div class="card-footer small text-muted">Updated at <%= moment().format('MMMM Do YYYY, a h:mm:ss'); %></div>
@@ -168,7 +169,5 @@
   function detail(index) {
     $('#element'+index).tooltip({placement: "bottom", html: true})
     // $('#element'+index).popover('show')
-
-
   }
 </script>
