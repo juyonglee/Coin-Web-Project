@@ -35,7 +35,8 @@ router.get('/member', function(req, res, next) {
                 // [유정이] - Property와 변수의 이름이 같으면 문제가 생깁니다.
                 // const member ={sequence: req., name: "jungee", email: "junge2",phone:"0000", plu:0, fnb: 1};
                 //  [유정이] - Hover로 부탁드려요!
-                res.render(`manager/index`, { member: members});
+                console.log(members);
+                res.render(`manager/index`, { member: members, moment});
             }
         }); 
     } else {
@@ -161,9 +162,16 @@ router.get('/addsales', function(req, res, next) {
                 console.log(err);
                 next(err);
             }
+            console.log(toxiResults);
             if(toxiResults.length>0) {
-                totalInfo['TOXI_COUNT'] = toxiResults[0].selling_count;
-                totalInfo['TOXI_PRICE'] = toxiResults[0].selling_price;
+                if(toxiResults[0].selling_price !== undefined) {
+                    console.log(toxiResults[0].selling_price);
+                    totalInfo['TOXI_COUNT'] = toxiResults[0].selling_count;
+                    totalInfo['TOXI_PRICE'] = toxiResults[0].selling_price;
+                } else {
+                    totalInfo['TOXI_COUNT'] = toxiResults[0].selling_count;
+                    totalInfo['TOXI_PRICE'] = 0;
+                }
             } else {
                 totalInfo['TOXI_COUNT'] = 0;
                 totalInfo['TOXI_PRICE'] = 0;
@@ -173,15 +181,22 @@ router.get('/addsales', function(req, res, next) {
                     console.log(err);
                     next(err);
                 }
+                console.log(pluResults);
                 if(pluResults.length>0) {
-                    totalInfo['PLU_COUNT'] = pluResults[0].selling_count;
-                    totalInfo['PLU_PRICE'] = pluResults[0].selling_price;
+                    if(pluResults[0].selling_price !== undefined) {
+                        totalInfo['PLU_COUNT'] = pluResults[0].selling_count;
+                        totalInfo['PLU_PRICE'] = pluResults[0].selling_price;
+                    } else {
+                        totalInfo['PLU_COUNT'] = pluResults[0].selling_count;
+                        totalInfo['PLU_PRICE'] = 0;
+                    }
+                    
                 } else {
                     totalInfo['PLU_COUNT'] = 0;
                     totalInfo['PLU_PRICE'] = 0;
                 }
                 console.log(totalInfo);
-                res.render('addsales', { addsales: totalInfo});
+                res.render('addsales', { addsales: totalInfo, moment});
             });
         });    
     } else {
@@ -191,8 +206,8 @@ router.get('/addsales', function(req, res, next) {
 
 router.get('/managermenu', function(req, res, next) {
     if(req.user) {
-        const menuInfo ={id: 0, date: 0, user_id: 0, name: "jung", kinds:"FNB", num: 2, price: 2000, status: "w"};
-        res.render('managermenu', { menu: menuInfo});
+        const menuInfo ={manager1: 'nandogas', manager2: 'nono1314'};
+        res.render('managermenu', { menu: menuInfo, moment});
     } else {
         res.redirect(`/manager/`);
     }
