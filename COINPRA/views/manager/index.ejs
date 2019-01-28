@@ -58,18 +58,38 @@
                       <% for (var i = 0; i < member.length; i++) { %>
                         <tr>
                           <td><a onmouseover="detail(<%=i%>)" id ="element<%=i%>" tabindex="<%=i%>"  data-trigger="focus"
-                                 title="- 주문번호: <%= member[i].name %><br>
-                                        - 수량: <%= member[i].username %><br>
-                                        - 종류:<%= member[i].phone %><br>
-                                        - 상태: <%= member[i].phone %>">
-
+                                 title="
+                                        <table>
+                                          <thead>
+                                            <tr>
+                                              <th>주문</th>
+                                              <th>수량</th>
+                                              <th>종류</th>
+                                              <th>상태</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                              <% for (var j = 0; j < member[i].buy_info.length; j++) { %>
+                                              <tr>
+                                                <!-- <td><%= member[i].buy_info[j] %></td> -->
+                                                <td><%= (j+1) %></td>
+                                                <td><%= member[i].buy_info[j].buy_count %></td>
+                                                <td><%= member[i].buy_info[j].coin_name %></td>
+                                                <% if(member[i].buy_info[j].buy_state == true) { %>
+                                                  <td>입금완료</td>
+                                                <% } else { %>
+                                                  <td>입금대기</td>
+                                                <% } %>
+                                              </tr>
+                                              <% } %>
+                                          </tbody>
+                                      </table>">
                               <%= member[i].sequence %></a></td>
                             <td><%= member[i].name %></td>
                             <td><%= member[i].username %></td>
                             <td><%= member[i].phone %></td>
                             <td><%= member[i].my_PLU + "개" %></td>
                             <td><%= member[i].my_TOXI + "개" %></td>
-
                         </tr>
                         <% } %>
                   </tbody>
@@ -77,7 +97,7 @@
 
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Updated at <%= moment().format('MMMM Do YYYY, a h:mm:ss'); %></div>
           </div>
 
         </div>
