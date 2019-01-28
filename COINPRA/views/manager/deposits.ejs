@@ -69,8 +69,8 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="/manager/depositDelete/<%=deposit[i]._id%>" method="POST">
-                                    <input type="submit" value="취소">
+                                <form onSubmit="if(!confirm('구매 취소하시겠습니까?')){return false;}" action="/manager/depositDelete/<%=deposit[i]._id%>" method="POST">
+                                    <button type="submit">취소</button>
                                 </form>
                             </td>
                         </tr>        
@@ -117,7 +117,7 @@
           </div>
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button  class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
@@ -144,4 +144,6 @@
         //previously active menu item
         $('#deposits').addClass('active');
     });
+
+
 </script>
