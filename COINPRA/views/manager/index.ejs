@@ -88,8 +88,8 @@
                             <td><%= member[i].name %></td>
                             <td><%= member[i].username %></td>
                             <!-- 클릭시  member[i].phone이 출력되어야함-->
-                            <td><a onmouseover="detail(<%=[i]%>)" id ="element<%=i%>" tabindex="<%=i%>"  data-trigger="focus"
-                              title="<%= member[i].phone %>"%></a><%= userNumbers[i]%></td>
+                            <td><a onmouseover="phoneDetail(<%=[i]%>)" id ="phonelement<%=i%>" tabindex="<%=i%>"  data-trigger="focus"
+                              title="<%= member[i].phone %>"</a><%= userNumbers[i]%></td>
                             <td><%= member[i].my_PLU + "개" %></td>
                             <td><%= member[i].my_TOXI + "개" %></td>
                         </tr>
@@ -168,6 +168,11 @@
 
   function detail(index) {
     $('#element'+index).tooltip({placement: "bottom", html: true})
+    // $('#element'+index).popover('show')
+  }
+
+  function phoneDetail(index) {
+    $('#phonelement'+index).tooltip({placement: "bottom", html: true})
     // $('#element'+index).popover('show')
   }
 </script>
