@@ -1,7 +1,7 @@
 :root{
     --white: #fff;
     --color_2: linear-gradient(to right, #fc5c65 49%,#eb3b5a 50%);
-    --color_1: linear-gradient(to right, #4b7bec 49%,#3867d6 50%);
+    --color_1: linear-gradient(to right, #3f7edd 49%,#3f7edd 50%);
     --color_3: linear-gradient(to right, #fd9644 49%,#fa8231 50%);
     --color_4: linear-gradient(to right, #26de81 49%,#20bf6b 50%);
     --color_5: linear-gradient(to right, rgba(60, 62, 54, 0.61) 49%, rgba(35, 35, 36, 0.93) 50%);
@@ -10,10 +10,10 @@
     color: var(--white);
     background: var(--color_1);
     font-family: 'Signika', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 1px;
-    line-height: 34px;
+    line-height: 25px;
     text-transform: uppercase;
     padding: 10px 25px;
     margin: 15px 45px;

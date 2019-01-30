@@ -2,25 +2,30 @@
 #sec_page {
     width: 100%;
     height: 100vh;
-    background: url(/images/background/page_2_back.jpeg) no-repeat 50% 50%;
+    background: url(/images/background/bg02.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 
 #third_page {
     width: 100%;
     height: 100vh;
-    background: url(/images/background/pages.jpeg) no-repeat 50% 50%;
+    background: url(/images/background/bg03.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 
 #last_page {
     width: 100%;
     height: 100vh;
-    background: #eeeeee;
+    background: #171b24;
     background-size: cover;
 }
 
-
+#last_page2 {
+    width: 100%;
+    height: 100vh;
+    background: #171b24;
+    background-size: cover;
+}
 
 html, body {
     margin: 0;
@@ -36,12 +41,12 @@ body {
 header {
     width: 100%;
     height: 100vh;
-    background: url(/images/background/page_1_back.jpeg) no-repeat 50% 50%;
+    background: url(/images/background/bg01.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 
 .content {
-    width: 94%;
+    width: 100%;
     margin: 4em auto;
     font-size: 20px;
     line-height: 30px;
