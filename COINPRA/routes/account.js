@@ -39,6 +39,12 @@ router.get('/logout', function(req, res, next) {
     res.redirect('/');
 });
 
+// 관리자 로그아웃 Router (GET)
+router.get('/managerlogout', function(req, res, next) {
+    req.logout();
+    res.redirect('/manager');
+});
+
 //  비밀번호 변경에 관련된 Router (GET, POST)
 router.get('/changePassword', function(req, res, next) {
     if(req.user) {
@@ -54,6 +60,29 @@ router.post('/changePassword', function(req, res, next) {
             Account.update({username:req.user.username}, {$set: {salt: buf.toString('base64'), password:derivedKey.toString('base64')}}, function(err, output){
                 if (err) throw err;
                 res.redirect('/');
+            }); 
+        });
+    });
+});
+
+
+router.post('/manager1', function(req, res, next) {
+    crypto.randomBytes(64, (err, buf) => {
+        crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
+            Account.update({username:'nandogas'}, {$set: {salt: buf.toString('base64'), password:derivedKey.toString('base64')}}, function(err, output){
+                if (err) throw err;
+                res.redirect('/account/managerlogout');
+            }); 
+        });
+    });
+});
+
+router.post('/manager2', function(req, res, next) {
+    crypto.randomBytes(64, (err, buf) => {
+        crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
+            Account.update({username:'nono1314'}, {$set: {salt: buf.toString('base64'), password:derivedKey.toString('base64')}}, function(err, output){
+                if (err) throw err;
+                res.redirect('/account/managerlogout');
             }); 
         });
     });

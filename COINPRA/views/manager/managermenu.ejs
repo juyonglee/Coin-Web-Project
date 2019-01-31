@@ -48,8 +48,8 @@
                             <td>1</td>
                             <td><%= menu.manager1 %></td>
                             <td>
-                                <form class="form-inline">
-                                        <input value="<%= menu.user_id %>" type="text" class="form-control" id="exampleInputPassword1">
+                                <form class="form-inline" action="/account/manager1/" method="POST">
+                                        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                                         <button>수정</button>
                                 </form>
                             </td>
@@ -58,8 +58,8 @@
                             <td>2</td>
                             <td><%= menu.manager2 %></td>
                             <td>
-                                <form class="form-inline">
-                                        <input value="<%= menu.user_id %>" type="text" class="form-control" id="exampleInputPassword1">
+                                <form class="form-inline" action="/account/manager2/" method="POST">
+                                        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                                         <button>수정</button>
                                 </form>
                             </td>
