@@ -15,30 +15,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template-->
-    <link href="../stylesheets/hover-effect.css" rel="stylesheet">
+    <!--<link href="../stylesheets/hover-effect.css" rel="stylesheet">-->
     <link href="../stylesheets/footer.css" rel="stylesheet">
-    <link href="../stylesheets/progress.css" rel="stylesheet">
-    <link href="../stylesheets/main.css" rel="stylesheet">
-    <link href="../stylesheets/button.css" rel="stylesheet">
-    <link href="../stylesheets/signup.css" rel="stylesheet">
-    <link href="../stylesheets/main_coin.css" rel="stylesheet">
-    <script href="../javascript/main-page.js" ></script>
+    <!--<link href="../stylesheets/progress.css" rel="stylesheet">-->
+    <link href="../stylesheets/test.css" rel="stylesheet">
+    <!--<link href="../stylesheets/button.css" rel="stylesheet">-->
+    <!--<link href="../stylesheets/signup.css" rel="stylesheet">-->
+    <!--<link href="../stylesheets/main_coin.css" rel="stylesheet">-->
+    <script href="../javascript/nav.js" ></script>
 </head>
-<body>
+<body  ng-app="scotchApp">
 
 
 <!-- 1. 첫 페이지 -->
 <header>
+    <!--<nav>-->
+        <!--<div class="menu-icon">-->
+            <!--<i class="fa fa-bars fa-2x"></i>-->
+        <!--</div>-->
+        <!--<div class="logo">-->
+            <!--<a  href="/"><img style="width: 70%" src="images/logo/contents_mainlogo.png"></a>-->
+        <!--</div>-->
+        <!--<div class="menu" style="width: 100%">-->
+            <!--<ul>-->
+                <!--<li><a href="/account/signin"> 로그인</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</nav>-->
     <nav>
         <div class="menu-icon">
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <a  href="/"><img style="width: 70%" src="images/logo/contents_mainlogo.png"></a>
+            <a  href="/"><img style="width: 60%" src="images/logo/contents_mainlogo.png"></a>
         </div>
         <div class="menu">
             <ul>
-                <li><img style="width: 30%" src="images/logo/contents_mainloginicon.png"><a href="/account/signin"> 로그인</a></li>
+                <li><a href="/account/signin">로그인</a></li>
+
             </ul>
         </div>
     </nav>
@@ -71,70 +85,44 @@
 </div>
 <!-- 2. 두번째 페이지: 코인 구매 -->
 <header id="sec_page">
-    <!--<div class="container" style="position: absolute; top:125%; width: 100%">-->
-        <!--<div class="row" style="text-align:center;">-->
-            <!--<div class="col-md-3 col-sm-6" >-->
-                <!--<div class="serviceBox purple" style="background:  #8c8c8c; height: 270px">-->
-                    <!--<div class="service-count purple">1</div>-->
-                    <!--<div class="service-content">-->
-                        <!--<h2>PLU 코인</h2>-->
-                        <!--<h3 style="color:#7b0000">-->
-                           <!--판매 완료-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="col-md-3 col-sm-6">-->
-                <!--<div class="serviceBox purple" style="background:  #8c8c8c; height: 270px">-->
-                    <!--<div class="service-count">2</div>-->
-                    <!--<div class="service-content">-->
-                        <!--<h2>PLU 코인</h2>-->
-                        <!--<h3 style="color:#7b0000">-->
-                            <!--판매 완료-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-
-            <!--<div class="col-md-3 col-sm-6">-->
-                <!--<div class="serviceBox purple" style="height: 270px">-->
-                    <!--<div class="service-count">3</div>-->
-                    <!--<div class="service-icon">-->
-                        <!--<i class="fa fa-globe"></i>-->
-                    <!--</div>-->
-                    <!--<div class="service-content">-->
-                        <!--<h2>PLU 코인</h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="col-md-3 col-sm-6 ">-->
-                <!--<div class="serviceBox" style="height: 270px">-->
-                    <!--<div class="service-count">4</div>-->
-                    <!--<div class="service-icon">-->
-                        <!--<i class="fa fa-rocket"></i>-->
-                    <!--</div>-->
-                    <!--<div class="service-content">-->
-                        <!--<h2>FNB 코인</h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div style="position: absolute; left: 50%; top:175%">-->
-        <!--<a style="position: relative; left: -50%;"   class="btn btn-lg"  data-toggle="modal" href="/salelist" >구매하러가기</a>-->
-    <!--</div>-->
-
-
 </header>
 
-<div class="row"  style="position: absolute;  top:110%; padding-left: 5%; padding-right: 5%;">
-    <div class="col-xs-3 col-sm-3"><img style="width: 95%" src="/images/secpage/contents02_plucoin.jpg"></div>
-    <div class="col-xs-3 col-sm-3"><img style="width: 95%" src="/images/secpage/contents02_plucoin.jpg"></div>
+<div class="row" style="position: absolute;  top:107%; padding-left: 5%; padding-right: 5%; width: 100%">
+    <div class="col-xs-1 col-sm-2"><p style="color: #02a3f1"><b>PLU 정보 </b></p></div>
+    <div class="col-xs-10 col-md-8"></div>
+<div class="col-xs-1 col-md-2"><p style="color: #c8b801"><b>TOXI 정보 </b></p></div>
+</div>
+
+<div class="row" style="position: absolute;  top:110%; padding-left: 5%; padding-right: 5%;">
+    <div class="col-xs-3 col-sm-3"><img style="width: 95%" src="/images/secpage/contents02_plu.jpg"></div>
+    <div class="col-xs-3 col-sm-3"><img style="width: 95%" src="/images/secpage/contents02_plu.jpg"></div>
     <div class="col-xs-3 col-sm-3"><img style="width: 95%" src="/images/secpage/contents02_plucoin.jpg"></div>
     <div class="col-xs-3 col-sm-3"><img style="width: 95%" src="/images/secpage/contents02_toxicoin.jpg"></div>
 </div>
+
+<div class="row" style="position: absolute;  top:150%; ">
+    <div class="col-xs-9 col-sm-9">
+        <div  class="progress" >
+            <div class="progress-bar" style="background:#3f7edd;"></div>
+            <div class="progress-content">
+                <span class="progress-title">판매율</span>
+                <span class="progress-value">92%</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3  col-sm-3">
+        <!--<div style="position: relative; " class="progress">-->
+            <!--<div class="progress-bar" style="width:85%; background:#3f7edd;"></div>-->
+            <!--<div class="progress-content">-->
+                <!--<span class="progress-title">판매율</span>-->
+                <!--<span class="progress-value">75%</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+
+
 <header id="third_page"></header>
 <div style="width:90%; height: 100%; position: absolute; left: 50%;top:210%">
     <img  style="position: relative; left: -41%; width: 80%" src="/images/basic/contents.jpg">
@@ -195,8 +183,15 @@
 </header>
 <header id="last_page2">
 </header>
-<div style="position: absolute;top:410%">
-    <img src="/images/basic/price.jpg">
+<div style="position: absolute;top:410%;">
+    <div class="row">
+        <div class="col-xs-1 col-md-1"></div>
+        <div class="col-xs-10 col-md-10">
+            <img style="position: relative; left: -50%; width: 99%" src="/images/lastpage/table.jpg">
+        </div>
+        <div class="col-xs-1 col-md-1"></div>
+    </div>
+
 </div>
 
 

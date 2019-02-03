@@ -6,6 +6,7 @@
     padding-bottom: 5px;
     margin-bottom: 20px;
     position: relative;
+
 }
 .progress .progress-bar{
     animation: animate-positive 2s;

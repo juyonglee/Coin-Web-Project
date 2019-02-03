@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="scotchApp">
+
+<head>
+    <!-- SPELLS -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/test.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/footer.css" />
+    <link href="../stylesheets/progress.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/button.css" />
+
+    <script href="../javascript/nav.js" ></script>
+    <!--<script src="javascripts/new.js"></script>&ndash;&gt;-->
+</head>
+
+<!-- define angular controller -->
+<body ng-app="scotchApp">
+
+<div class="wrapper">
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <div class="logo">
+                <a  href="/"><img style="width: 80%" src="images/logo/contents_mainlogo.png"></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><img style="width: 35%; margin-right: 8%" src="images/logo/contents_mainloginicon.png"><a href="/account/signin">로그인</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
+
+
+
+
+<div id="main">
+    <header id="about_back"></header>
+    <div style="position: absolute; left: 50%; top:71%">
+        <!--<a style="position: relative; left: -50%;"  class="btn btn-lg"  data-toggle="modal" data-target="#signupmodal" data-toggle="modal" >사전가입하기</a>-->
+        <input type="image" style="position: relative; left: -28%; width: 57%"  data-toggle="modal" data-target="#signupmodal" data-toggle="modal" src="images/basic/contents_mainbutton.jpg">
+    </div>
+    <div style="width:30%; height: 100%; position: absolute; left: 50%; top:78%">
+        <div style="position: relative; left: -50%;" class="progress">
+            <div class="progress-bar" style="width:85%; background:#3f7edd;"></div>
+            <div class="progress-content">
+                <span class="progress-title">진행상황</span>
+                <span class="progress-value">85%</span>
+            </div>
+        </div>
+    </div>
+    <div style="width:30%; height: 100%; position: absolute; left: 50%; top:82%">
+        <div style="position: relative; left: -50%;" >
+            <p style="color: #ffffff">0 <span style="margin-left: 80%"> 1,000,000</span></p>
+        </div>
+    </div>
+    <div style="position: absolute; left: 50%; top:88%">
+        <p class="text-center" style="position: relative; top: 75%; left: -50%; color: #eee; font-size: 22px;z-index: 1;font-weight: 300 ">
+            사전 가입하시고 IEO 참여 혜택을 누리세요!!<br>정식 OPEN 첫날 상장 됩니다.
+        </p>
+    </div>
+
+    <!-- 2. 두번째 페이지: 코인 구매 -->
+    <header id="about_back2"></header>
+    <div class="row" style="position: absolute;  top:107%; padding-left: 5%; padding-right: 10%; width: 100%">
+        <div class="col-xs-2 col-sm-3"><p style="color: #02a3f1"><b>PLU 정보 </b></p></div>
+        <div class="col-xs-8 col-md-6"></div>
+        <div class="col-xs-2 col-md-3"><p style="color: #c8b801; float: right"><b>TOXI 정보 </b></p></div>
+    </div>
+
+    <div class="row" style="position: absolute;  top:110%; padding-left: 5%; padding-right: 5%;">
+        <div class="col-xs-3 col-sm-3 col-md-3"><img style="width: 95%" src="/images/secpage/contents02_plu.jpg"></div>
+        <div class="col-xs-3 col-sm-3 col-md-3"><img style="width: 95%" src="/images/secpage/contents02_plu.jpg"></div>
+        <div class="col-xs-3 col-sm-3 col-md-3"><img style="width: 95%" src="/images/secpage/contents02_plucoin.jpg"></div>
+        <div class="col-xs-3 col-sm-3 col-md-3" style="float: right"><img style="float: right;width: 95%" src="/images/secpage/contents02_toxicoin.jpg"></div>
+    </div>
+
+    <div class="row" style="position: absolute;  top:150%; padding-left: 5%; padding-right: 10%; width: 100%">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+            <div class="progress" style="width: 94%">
+                <div class="progress-bar" style="width:92%; background:#3f7edd;"></div>
+                <div class="progress-content">
+                    <span class="progress-title">판매율</span>
+                    <span class="progress-value">92%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3"  >
+            <div class="progress" >
+                <div class="progress-bar" style="width:72%; background:#c8b801;" ></div>
+                <div class="progress-content" >
+                    <span class="progress-title">판매율</span>
+                    <span class="progress-value">75%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="position: absolute;  top:160%; padding-left: 5%; padding-right: 10%; width: 100%">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+            <p  style=" color: #4285e9; font-size: 24px;z-index: 1;font-weight: 400; ">
+               PLU 코인<span style="color: #ffffff">은</span>
+            </p>
+            <p  style=" color: #ffffff; font-size: 14px;z-index: 1;font-weight: 400 ">
+                _______
+            </p>
+            <p  style=" color: #ffffff; font-size: 14px;z-index: 1;font-weight: 300 ">
+                거래 시 발생하는 수수료를 대신 지불할 수 있습니다.<br>
+                PRA 코인으로 수수료를 대신 지불할 경우 수수료의 60%를 할인받을 수 있습니다.<br>
+                지불된 수수료는 즉시 소각 , 시장에 재판매 되지 않습니다.<br>
+                판매수량 30,000,000개 이후 추가 발행되지 않습니다.
+
+            </p>
+            <img src="/images/secpage/contents02_plubutton.jpg">
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3"  style="text-align: right">
+            <p  style=" color: #c8b801; font-size: 24px;z-index: 1;font-weight: 400 ;">
+                TOXI 코인<span style="color: #ffffff">은</span>
+            </p>
+            <p  style=" color: #ffffff; font-size: 14px;z-index: 1;font-weight: 400 ">
+                _______
+            </p>
+            <p  style=" color: #ffffff; font-size: 14px;z-index: 1;font-weight: 300 ">
+                국내 첫 실사용 코인입니다.<br>
+                유명 외식 프랜차이즈 업체에서 실사용 가능<br>
+                세계 첫 상장은 코인프라 에서 진행합니다.
+            </p>
+            <img src="/images/secpage/contents02_toxibutton.jpg">
+        </div>
+    </div>
+    <!--<div class="col-xs-9 col-sm-9">-->
+    <!--<div  class="progress" >-->
+    <!--<div class="progress-bar" style="background:#3f7edd;"></div>-->
+    <!--<div class="progress-content">-->
+    <!--<span class="progress-title">판매율</span>-->
+    <!--<span class="progress-value">92%</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-xs-3  col-sm-3">-->
+    <!--<div style="position: relative; " class="progress">-->
+    <!--<div class="progress-bar" style="width:85%; background:#3f7edd;"></div>-->
+    <!--<div class="progress-content">-->
+    <!--<span class="progress-title">판매율</span>-->
+    <!--<span class="progress-value">75%</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<p style="position: absolute; top: 67%; left: 100px; color: #eee; font-size: 37px;z-index: 1; "><b>JCP의 방향</b></p>-->
+    <!--<p style="position: absolute; top: 75%; left: 100px; color: #eee; font-size: 22px;z-index: 1;font-weight: 300 "> JCP는 블록체인의 연구 및 개발을 오랜 기간 동안 진행해 왔습니다.<br>편리한 결제 시스템을 갖추었고,<br>이제는 암호화폐의 실질적 가치를 증명하기 위해<br> 사용화에 주력을 다하고 있습니다.</p>-->
+    <!--<p style="position: absolute; top: 167%; left: 100px; color: #eee; font-size: 37px;z-index: 1; "><b>암호화폐의 가치</b></p>-->
+    <!--<p style="position: absolute; top: 175%; left: 100px; color: #eee; font-size: 22px;z-index: 1;font-weight: 300  "> 2010년 05월 18일 비트코인과 피자의 첫 교환이 이루어진 사건<br>비트코인이 실물교환의 기능을 할 수 있게 됨으로써 가치를 인정받게 됩니다.<br>암호화폐를 어디에 쓸 수 있을까 연구만 하는 시대는 이미 지났고,<br>현재는 사용처가 많은 암호화폐가 인정받습니다.</p>-->
+
+
+    <!-- 3. 세번째 페이지: 이벤트  -->
+    <header id="about_back3"></header>
+    <div class="row" style="position: absolute;  top:220%; ">
+        <div class="col-xs-3 col-sm-3 col-md-3"></div>
+        <div class="col-xs-1 col-sm-1 col-md-1" ><img style="width: 550%;" src="/images/basic/contents0301.jpg"></div>
+        <div class="col-xs-3 col-sm-3 col-md-3"></div>
+        <div class="col-xs-5 col-sm-5 col-md-5" >
+            <p  style=" color: #eee; font-size: 28px;z-index: 1;font-weight: 300 ">
+                <span style="color: #c8c82c"><strong>현금 1억</strong></span>을 정직하게 뿌립니다.<br>짜고 치는 이벤트는 가버렷!
+            </p>
+            <p  style=" color: #b9b9b9; font-size: 16px;z-index: 1;font-weight: 300 ">
+                로또당첨번호 낮은 5개 숫자중 뒤자리 숫자로 당첨자를 선별합니다.<br>
+                예) 로또 당첨번호가 ( 0<span style="color: #4368e0">5</span>, 0<span style="color: #4368e0">8</span>, 1<span style="color: #4368e0">7</span>, 2<span style="color: #4368e0">3</span>, 3<span style="color: #4368e0">0</span> ) 44 일때 <br>
+                5 8 7 3 0 이 당첨번호 입니다.
+            </p>
+            <p  style=" margin-top: 10%;color: #eee; font-size: 28px;z-index: 1;font-weight: 300 ">
+                PRA 코인 IEO 참여하시고,<br> <span style="color: #c8c82c"><strong>1억 원</strong></span>의 주인공이 되십시오.
+            </p>
+            <p  style=" color: #b9b9b9; font-size: 16px;z-index: 1;font-weight: 300 ">
+                1,000 PRA (10만원) 구매 시 1회 응모자격을 드립니다.<br>
+                응모 횟수에 제한은 없습니다. <br>
+                오픈전 스냅샷이 진행되며 응모번호는 개별 연락됩니다.<br>
+                추첨일은 오픈 후 공지됩니다. <br>
+                당첨자가 없을 시 다음 회차로 이월됩니다.<br>
+                제세공과금은 당첨자 본인 부담입니다.<br>
+
+            </p>
+        </div>
+
+    </div>
+    <div style="position: absolute; top:190%; left: 50%" >
+        <div style="position: relative;left: -50%;">
+            <a href="#" class="btn btn-lg">구매하러 가기</a>
+        </div>
+    </div>
+
+
+    <!-- 4. 네번째 페이지: 특징   -->
+    <header id="about_back4"></header>
+    <div style="position: absolute; left: 50%;  top:303%;" >
+        <div class="row"  style="position: relative; left: -50%;">
+            <!--<div class="col-xs-1 col-sm-1 col-md-1"></div>-->
+            <div class="col-xs-12 col-sm-6 col-md-6" ><img style="max-height:40vh" src="/images/basic/pic_01.jpeg"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6" ><img style="max-height:40vh" src="/images/basic/pic_02.jpeg"></div>
+            <!--<div class="col-xs-1 col-sm-1 col-md-1" ></div>-->
+
+        </div>
+
+        <div class="row"  style="position: relative;left: -50%; margin-top: 3%">
+            <!--<div class="col-xs-1 col-sm-1 col-md-1"></div>-->
+            <div class="col-xs-12 col-sm-6 col-md-6"  style="" ><img style=" margin-left: -45%;max-height:40vh" src="/images/basic/pic_03.jpeg"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6" ><img  style="max-height:40vh" src="/images/basic/pic_04.jpeg"></div>
+            <!--<div class="col-xs-1 col-sm-1 col-md-1" ></div>-->
+
+        </div>
+    </div>
+    <div style="position: absolute; top:390%; left: 50%" >
+        <div style="position: relative;left: -50%;">
+        <a href="#" class="btn btn-lg">코인프라 지금 가입하기</a>
+        </div>
+    </div>
+
+
+
+    <!-- 4. 다섯번째 페이지: 특징   -->
+    <header id="about_back5"></header>
+    <div style="position: absolute;  top:403%; width: 100%" >
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2" >
+                <a href="#" class="btn btn-lg blue" style="width: 100%">KRW</a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2" >
+                <a href="#" class="btn btn-lg" style="width: 100%">ETH</a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4"></div>
+        </div>
+    </div>
+
+    <div style="position: absolute;  top:412%; width: 100%" >
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+            <div class="col-xs-10 col-sm-10 col-md-10">
+                <img style="width: 98%" src="/images/lastpage/table.jpg">
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+        </div>
+    </div>
+</div>
+
+<section id="footer">
+    <div class="container">
+       <p style="color: #ffffff">이용 약관 &nbsp; |&nbsp;  개인정보 취급 방침 &nbsp; |&nbsp;  이용문의(이메일) </p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">주식회사 : 코인플레이스  &nbsp; &nbsp; 사업자등록번호: 423-87-01260  &nbsp; &nbsp; 대표: 권진성부산광역시 해운대구 센텀중앙로 48 , 7층 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">대표번호 : 1577-2067  &nbsp; &nbsp; 상장 및 제휴문의: support@Coinplace.com </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">Copyright © 2019 Coinplace. ALL RIGHT RESERVED</p>
+            </div>
+        </div>
+
+        </div>
+</section>
+
+</body>
+
+</html>
