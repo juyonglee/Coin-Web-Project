@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/footer.css" />
     <link href="../stylesheets/progress.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/button.css" />
+    <link href="../stylesheets/signup.css" rel="stylesheet">
 
     <script href="../javascript/nav.js" ></script>
     <!--<script src="javascripts/new.js"></script>&ndash;&gt;-->
@@ -49,7 +50,7 @@
     <header id="about_back"></header>
     <div style="position: absolute; left: 50%; top:71%">
         <!--<a style="position: relative; left: -50%;"  class="btn btn-lg"  data-toggle="modal" data-target="#signupmodal" data-toggle="modal" >사전가입하기</a>-->
-        <input type="image" style="position: relative; left: -28%; width: 57%"  data-toggle="modal" data-target="#signupmodal" data-toggle="modal" src="images/basic/contents_mainbutton.jpg">
+        <input type="image" style="position: relative; left: -28%; width: 57%" data-target="#signupmodal" data-toggle="modal" src="images/basic/contents_mainbutton.jpg">
     </div>
     <div style="width:30%; height: 100%; position: absolute; left: 50%; top:78%">
         <div style="position: relative; left: -50%;" class="progress">
@@ -174,9 +175,9 @@
             <p  style=" color: #eee; font-size: 28px;z-index: 1;font-weight: 300 ">
                 <span style="color: #c8c82c"><strong>현금 1억</strong></span>을 정직하게 뿌립니다.<br>짜고 치는 이벤트는 가버렷!
             </p>
-            <p  style=" color: #b9b9b9; font-size: 16px;z-index: 1;font-weight: 300 ">
+            <p  style=" color: #ffffff; font-size: 16px;z-index: 1;font-weight: 300 ">
                 로또당첨번호 낮은 5개 숫자중 뒤자리 숫자로 당첨자를 선별합니다.<br>
-                예) 로또 당첨번호가 ( 0<span style="color: #4368e0">5</span>, 0<span style="color: #4368e0">8</span>, 1<span style="color: #4368e0">7</span>, 2<span style="color: #4368e0">3</span>, 3<span style="color: #4368e0">0</span> ) 44 일때 <br>
+                예) 로또 당첨번호가 ( 0<span style="color: #4285e9">5</span>, 0<span style="color: #4285e9">8</span>, 1<span style="color: #4285e9">7</span>, 2<span style="color: #4285e9">3</span>, 3<span style="color: #4285e9">0</span> ) 44 일때 <br>
                 5 8 7 3 0 이 당첨번호 입니다.
             </p>
             <p  style=" margin-top: 10%;color: #eee; font-size: 28px;z-index: 1;font-weight: 300 ">
@@ -196,7 +197,7 @@
     </div>
     <div style="position: absolute; top:190%; left: 50%" >
         <div style="position: relative;left: -50%;">
-            <a href="#" class="btn btn-lg">구매하러 가기</a>
+           <a href="/saleList" class="btn btn-lg">구매하러 가기</a>
         </div>
     </div>
 
@@ -222,7 +223,7 @@
     </div>
     <div style="position: absolute; top:390%; left: 50%" >
         <div style="position: relative;left: -50%;">
-        <a href="#" class="btn btn-lg">코인프라 지금 가입하기</a>
+        <a class="btn btn-lg" data-target="#signupmodal" data-toggle="modal">코인프라 지금 가입하기</a>
         </div>
     </div>
 
@@ -275,6 +276,59 @@
 
         </div>
 </section>
+
+
+<!-- 회원가입 모달 -->
+<div class="modal fade" id="signupmodal" ttabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="/account/signup">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <i class="fa fa-envelope-o"></i>
+                        <input required=""  name="username" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <i class="fa fa-lock"></i>
+                        <input required="" name="password" type="password" class="form-control" placeholder="Password">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password 확인</label>
+                        <i class="fa fa-lock"></i>
+                        <input required="" name="password_check" type="password" class="form-control" placeholder="Password 확인">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">이름</label>
+                        <i class="fa fa-lock"></i>
+                        <input required="" name="name" type="text" class="form-control" placeholder="이름">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">핸드폰 번호</label>
+                        <i class="fa fa-lock"></i>
+                        <input class="form-control" placeholder="010-0000-0000 형식으로 작성해주세요." type="tel" id="phone" name="phoneNumber"
+                               pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                               required>
+                        <!--<input required="" name="phoneNumber" type="number" >-->
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default" style="width: 80%">회원가입</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 
