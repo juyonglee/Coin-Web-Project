@@ -20,68 +20,73 @@
     <link href="../stylesheets/salelist.css" rel="stylesheet">
     <link href="../stylesheets/button.css" rel="stylesheet">
     <link href="../stylesheets/main_coin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/footer.css" />
     <script href="../javascript/main-page.js" ></script>
 </head>
-<body>
+<body ng-app="scotchApp">
 
+<div class="wrapper">
 
-<!-- 1. 첫 페이지 -->
-<header>
-    <nav>
-        <div class="menu-icon">
-            <i class="fa fa-bars fa-2x"></i>
-        </div>
-        <div class="logo">
-            <a  href="/"><img style="width: 46%" src="images/logo/main_logo.png"></a>
-        </div>
-        <div class="menu">
-            <ul>
-                <li><a href="/account/signin">SIGN IN</a></li>
-            </ul>
-        </div>
-    </nav>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <div class="logo">
+                <a  href="/"><img style="width: 80%" src="images/logo/contents_mainlogo.png"></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><img style="width: 35%; margin-right: 8%" src="images/logo/contents_mainloginicon.png"><a href="/account/signin">로그인</a></li>
+                </ul>
+            </div>
+        </nav>
+
+</div>
 
     <!--<div style="position: absolute; left: 50%; top:40%">-->
-    <div class="container" style="position: absolute; left: 50%; top:20%">
-        <div class="row" style="position: relative; left: -50%;">
-            <div class="col-md-6">
+<!--<header></header>-->
+    <div id="main" class="container" style="background: #333333; width: 100%;">
+        <div>
+        <div class="row" style="margin-top: 15%" >
+            <div class="col-md-1 col-xs-0 col-sm-0"></div>
+            <div class="col-md-5 col-xs-12 col-sm-12">
                 <div id="news-slider" class="owl-carousel">
                     <div class="post-slide">
-                        <div class="post-img" style="height: 250px;">
-                            <img src="images/basic/sale_1.jpg" alt="">
-                            <div class="category">FNB</div>
+                        <div class="post-img" style="height: 100%">
+                            <img src="/images/secpage/contents02_toxicoin.jpg" alt="">
+                            <div class="category">TOXI</div>
                         </div>
-                        <div class="post-review" style="height: 320px;">
-                            <h3 class="post-title"><a href="#">FNB 코인 2차판매</a></h3>
-                            <p class="post-description">
+                        <div class="post-review" >
+                            <h3 class="post-title"><a href="#">TOXI 코인 2차판매</a></h3>
+                            <p style="font-size: 15px;z-index: 1;font-weight: 300" class="post-description">
                                 IEO 가격 = 100 원
                                 <br>
                                 판매수량 - 20,000,000 개
                             </p>
-                            <div class="post-bar">
-                                <div style="position: absolute; left: 50%; ">
-                                    <div style="position: relative; left: -50%;" class="progress">
+                            <div class="post-bar" style="width: 100%">
+                                <div style="width: 100% ">
+                                    <div style="position: relative;" class="progress">
                                         <div class="progress-bar" style="width:22.54%; background:#20bf6b;"></div>
                                         <div class="progress-content">
                                             <span class="progress-title">진행률</span>
                                             <span class="progress-value">22.54%</span>
                                         </div>
                                     </div>
-                                    <a style="position: relative; left: -50%;"  class="btn btn-lg orange"  data-toggle="modal" href="/salelist/detail" data-toggle="modal" >구매하기</a>
+                                    <a style="position: relative; "  class="btn btn-lg orange center-block"  data-toggle="modal" href="/salelist/detail" data-toggle="modal" >구매하기</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5 col-xs-12 col-sm-12">
                 <div id="news-slider" class="owl-carousel" >
                     <div class="post-slide">
-                        <div class="post-img"  style="height: 250px;">
-                            <img src="images/basic/sale_2.jpg" alt="">
+                        <div class="post-img"  >
+                            <img src="/images/secpage/contents02_plucoin.jpg" alt="">
                             <div class="category">PLU</div>
                         </div>
-                        <div class="post-review" class="post-review"  style="height: 320px;">
+                        <div class="post-review" class="post-review" >
                             <h3 class="post-title"><a href="#">PLU 코인 3차판매</a></h3>
                             <p class="post-description">
                                 IEO 가격 = 100 원
@@ -89,32 +94,35 @@
                                 판매수량 - 15,000,000 개
                             </p>
                             <div class="post-bar">
-                                <div style="position: absolute; left: 50%; ">
-                                    <div style="position: relative; left: -50%;" class="progress">
+                                <div style=" ">
+                                    <div class="progress">
                                         <div class="progress-bar" style="width:17.65%; background:#20bf6b;"></div>
                                         <div class="progress-content">
                                             <span class="progress-title">진행률</span>
                                             <span class="progress-value">17.65%</span>
                                         </div>
                                     </div>
-                                    <a style="position: relative; left: -50%;"  class="btn btn-lg orange"  data-toggle="modal" href="/salelist/detail"  data-toggle="modal" >구매하기</a>
+                                    <a class="btn btn-lg orange center-block"  data-toggle="modal" href="/salelist/detail"  data-toggle="modal" >구매하기</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-1 col-xs-0 col-sm-0"></div>
             </div>
+        </div>
 
-        <div class="row" style="position: relative; left: -50%; margin-top: 5%">
-            <div class="col-md-6">
+        <div class="row" style="margin-top: 5%">
+            <div class="col-md-1 col-xs-0 col-sm-0"></div>
+            <div class="col-md-5 col-xs-12 col-sm-12">
                 <div id="news-slider" class="owl-carousel">
                     <div class="post-slide">
-                        <div class="post-img" style="height: 250px;">
-                            <img src="images/basic/sale_2.jpg" alt="">
+                        <div class="post-img">
+                            <img src="/images/secpage/contents02_plu.jpg" alt="">
                             <div class="category">PLU</div>
                         </div>
-                        <div class="post-review" style="height: 320px;">
+                        <div class="post-review" >
                             <h3 class="post-title"><a href="#">PLU 코인 2차판매</a></h3>
                             <p class="post-description">
                                 IEO 가격 = 100 원
@@ -122,59 +130,79 @@
                                 판매수량 - 10,000,000 개
                             </p>
                             <div class="post-bar">
-                                <div style="position: absolute; left: 50%; ">
-                                    <div style="position: relative; left: -50%;" class="progress">
+                                <div>
+                                    <div class="progress">
                                         <div class="progress-bar" style="width:100%; background:#232324;"></div>
                                         <div class="progress-content">
                                             <span class="progress-title">진행률</span>
                                             <span class="progress-value">100%</span>
                                         </div>
                                     </div>
-                                    <a style="position: relative; left: -50%;"  class="btn btn-lg gray"  data-toggle="modal" data-target="#" data-toggle="modal" >마감</a>
+                                    <a class="btn btn-lg gray center-block"  data-toggle="modal" data-target="#" data-toggle="modal" >마감</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5 col-xs-12 col-sm-12">
                 <div id="news-slider" class="owl-carousel">
                     <div class="post-slide">
-                        <div class="post-img" style="height: 250px;">
-                            <img src="images/basic/sale_2.jpg" alt="">
+                        <div class="post-img">
+                            <img src="/images/secpage/contents02_plu.jpg" alt="">
                             <div class="category">PLU</div>
                         </div>
-                        <div class="post-review" style="height: 320px;">
-                            <h3 class="post-title"><a href="#">PLU 코인 1차판매</a></h3>
+                        <div class="post-review" >
+                            <h3 class="post-title"><a href="#">PLU 코인 2차판매</a></h3>
                             <p class="post-description">
                                 IEO 가격 = 100 원
                                 <br>
-                                판매수량 - 5,000,000 개
+                                판매수량 - 10,000,000 개
                             </p>
                             <div class="post-bar">
-                                <div style="position: absolute; left: 50%; ">
-                                    <div style="position: relative; left: -50%;" class="progress">
+                                <div>
+                                    <div class="progress">
                                         <div class="progress-bar" style="width:100%; background:#232324;"></div>
                                         <div class="progress-content">
                                             <span class="progress-title">진행률</span>
                                             <span class="progress-value">100%</span>
                                         </div>
                                     </div>
-                                    <a style="position: relative; left: -50%;"  class="btn btn-lg gray"  data-toggle="modal" data-target="#" data-toggle="modal" >마감</a>
+                                    <a class="btn btn-lg gray center-block"  data-toggle="modal" data-target="#" data-toggle="modal" >마감</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-1 col-xs-0 col-sm-0"></div>
         </div>
         </div>
     </div>
     <!--</div>-->
 
 
+<section id="footer">
+    <div class="container">
+        <p style="color: #ffffff">이용 약관 &nbsp; |&nbsp;  개인정보 취급 방침 &nbsp; |&nbsp;  이용문의(이메일) </p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">주식회사 : 코인플레이스  &nbsp; &nbsp; 사업자등록번호: 423-87-01260  &nbsp; &nbsp; 대표: 권진성부산광역시 해운대구 센텀중앙로 48 , 7층 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">대표번호 : 1577-2067  &nbsp; &nbsp; 상장 및 제휴문의: support@Coinplace.com </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">Copyright © 2019 Coinplace. ALL RIGHT RESERVED</p>
+            </div>
+        </div>
 
-</header>
+    </div>
+</section>
 
 
 </body>

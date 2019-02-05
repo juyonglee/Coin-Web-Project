@@ -376,16 +376,17 @@
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
 
-    // console.log("test", check_1.value);
-    // function validateCheck(){
-    //     if(check_1.value == "on") {
-    //         check_1.setCustomValidity('');
-    //     } else {
-    //         check_1.setCustomValidity("동의 체크를 해주세요.");
-    //     }
-    // }
-    //
-    // check_1.onchange = validateCheck;
-    // check_2.onkeyup = validateCheck;
+    console.log("test", check_1.checked);
+    function validateCheck(){
+        if(check_1.checked == "") {
+            console.log("test-동의필요");
+            check_1.setCustomValidity("동의 체크를 해주세요.");
+
+        } else {
+            check_1.setCustomValidity('');
+        }
+    }
+    check_1.onchange = validateCheck;
+    check_1.onkeyup = validateCheck;
 
 </script>

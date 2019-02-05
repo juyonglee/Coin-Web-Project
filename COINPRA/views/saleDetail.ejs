@@ -19,6 +19,7 @@
     <link href="../stylesheets/tab.css" rel="stylesheet">
     <link href="../stylesheets/saledetail.css" rel="stylesheet">
     <link href="../stylesheets/button.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/footer.css" />
     <!--<link href="../stylesheets/main_coin.css" rel="stylesheet">-->
     <script href="../javascript/main-page.js" ></script>
 </head>
@@ -26,21 +27,23 @@
 
 
 <!-- 1. 첫 페이지 -->
-<header>
-    <nav>
-        <div class="menu-icon">
-            <i class="fa fa-bars fa-2x"></i>
-        </div>
-        <div class="logo">
-            <a  href="/"><img style="width: 46%" src="../images/logo/main_logo.png"></a>
-        </div>
-        <div class="menu">
-            <ul>
-                <li><a href="/account/signin">SIGN IN</a></li>
-            </ul>
-        </div>
-    </nav>
-
+<div class="wrapper">
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <div class="logo">
+                <a  href="/"><img style="width: 80%" src="../images/logo/contents_mainlogo.png"></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><img style="width: 35%; margin-right: 8%" src="../images/logo/contents_mainloginicon.png"><a href="/account/signin">로그인</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
 </header>
 <div style="margin-top:5%">
     <div class="row" >
@@ -94,9 +97,9 @@
                                                     <input type="checkbox"> 유의사항을 모두 읽고 동의합니다.
                                                 </label>
                                             </div>
-                                            <div class="form-group" >
-                                                <div class="col-sm-offset-2 col-sm-10" style="position: absolute; left: 50%;">
-                                                    <button  type="button"  data-toggle="modal" data-target="#myModal" type="submit" class="btn btn-default" style="position: relative; left: -50%;" >구매하기</button>
+                                            <div class="form-group" style="margin-top: 3%" >
+                                                <div>
+                                                    <button  type="button"  data-toggle="modal" data-target="#myModal" type="submit" class="btn btn-default blue center-block" >구매하기</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -197,6 +200,28 @@
         </div>
     </div>
 </div>
+
+<section id="footer">
+    <div class="container">
+        <p style="color: #ffffff">이용 약관 &nbsp; |&nbsp;  개인정보 취급 방침 &nbsp; |&nbsp;  이용문의(이메일) </p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">주식회사 : 코인플레이스  &nbsp; &nbsp; 사업자등록번호: 423-87-01260  &nbsp; &nbsp; 대표: 권진성부산광역시 해운대구 센텀중앙로 48 , 7층 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">대표번호 : 1577-2067  &nbsp; &nbsp; 상장 및 제휴문의: support@Coinplace.com </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <p style="color: #ffffff">Copyright © 2019 Coinplace. ALL RIGHT RESERVED</p>
+            </div>
+        </div>
+
+    </div>
+</section>
 </body>
 </html>
 
