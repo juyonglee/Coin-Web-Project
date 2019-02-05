@@ -305,13 +305,13 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <i class="fa fa-lock"></i>
-                        <input required="" name="password" type="password" class="form-control" placeholder="Password">
+                        <input required="" id="password" name="password" type="password" class="form-control" placeholder="Password">
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password 확인</label>
                         <i class="fa fa-lock"></i>
-                        <input required="" name="password_check" type="password" class="form-control" placeholder="Password 확인">
+                        <input id="confirm_password" required="" name="password_check" type="password" class="form-control" placeholder="Password 확인">
 
                     </div>
                     <div class="form-group">
@@ -329,6 +329,24 @@
                         <!--<input required="" name="phoneNumber" type="number" >-->
 
                     </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-md-6">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="check_1" name="check_1" type="checkbox"> 이용약관 동의
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-md-6">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input  id="check_2" name="check_2" type="checkbox"> 개인정보취급방침 동의
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-default" style="width: 100%">회원가입</button>
                     </div>
@@ -342,3 +360,32 @@
 </body>
 
 </html>
+
+<script>
+    var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+    var check_1 = document.getElementById("check_1"), check_2 = document.getElementById("check_2");
+
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("비밀번호가 일치하지 않습니다.");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+    // console.log("test", check_1.value);
+    // function validateCheck(){
+    //     if(check_1.value == "on") {
+    //         check_1.setCustomValidity('');
+    //     } else {
+    //         check_1.setCustomValidity("동의 체크를 해주세요.");
+    //     }
+    // }
+    //
+    // check_1.onchange = validateCheck;
+    // check_2.onkeyup = validateCheck;
+
+</script>
