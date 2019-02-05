@@ -158,13 +158,13 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <i class="fa fa-lock"></i>
-                        <input required="" id="password" name="password" type="password" class="form-control" placeholder="Password">
+                        <input required="" id="password2" name="password" type="password" class="form-control" placeholder="Password">
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password 확인</label>
                         <i class="fa fa-lock"></i>
-                        <input id="confirm_password" required="" name="password_check" type="password" class="form-control" placeholder="Password 확인">
+                        <input id="confirm_password2" required="" name="password_check" type="password" class="form-control" placeholder="Password 확인">
 
                     </div>
                     <div class="form-group">
@@ -182,6 +182,7 @@
 
 <script>
     var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+    var password2 = document.getElementById("password2"), confirm_password2 = document.getElementById("confirm_password2");
     var check_1 = document.getElementById("check_1"), check_2 = document.getElementById("check_2");
 
     function validatePassword(){
@@ -192,8 +193,19 @@
         }
     }
 
+    function validatePassword2(){
+        if(password2.value != confirm_password2.value) {
+            confirm_password2.setCustomValidity("비밀번호가 일치하지 않습니다.");
+        } else {
+            confirm_password2.setCustomValidity('');
+        }
+    }
+
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
+
+    password2.onchange = validatePassword2;
+    confirm_password2.onkeyup = validatePassword2;
 
     console.log("test", check_1.checked);
     function validateCheck(){
