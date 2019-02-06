@@ -69,10 +69,10 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab_default_1">
                                             <div style="background: rgba(66,160,246,0.49); height: 50px" class="text-center">
-                                                <p style="color: #991108; padding-top: 2%"><b>1PLU = 100원</b></p>
+                                                <p style="color: #991108; padding-top: 2%"><b>1TOXI = 100원</b></p>
                                             </div>
                                         </div>
-                                        <form method="POST" action="/product/pluPurchase" class="form-horizontal" style="margin-top: 5%">
+                                        <form method="POST" action="/product/toxiPurchase" class="form-horizontal" style="margin-top: 5%">
                                             <div class="form-group">
                                                 <label for="inputEmail3" name="buy_count" class="col-sm-2 control-label">주문 수량</label>
                                                 <div class="col-sm-10">
@@ -94,12 +94,12 @@
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 유의사항을 모두 읽고 동의합니다.
+                                                    <input type="checkbox" id="check_1"> 유의사항을 모두 읽고 동의합니다.
                                                 </label>
                                             </div>
                                             <div class="form-group" style="margin-top: 3%" >
                                                 <div>
-                                                    <button  type="button"  data-toggle="modal" data-target="#myModal" type="submit" class="btn btn-default blue center-block" >구매하기</button>
+                                                    <button onclick="validateChecked()" class="btn btn-default blue center-block" >구매하기</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -226,9 +226,28 @@
 </html>
 
 <script>
+
+    var check_1 = document.getElementById("check_1");
     function resultFunction(){
         var x = document.getElementById("num").value;
         document.getElementById("result").value = x*100;
 
     }
+
+    function validateChecked(){
+
+        var req = check_1.checked;
+        var num = 0;
+
+        if(req == true){
+            num = 1;
+        }
+        if(num==1){
+            document.form.submit();
+            $('#myModal').modal('show');
+        }else{
+            alert("유의사항에 동의하셔야 합니다.");
+        }
+    }
+
 </script>
