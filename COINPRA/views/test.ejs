@@ -347,7 +347,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default" style="width: 100%; margin-top: 2%">회원가입</button>
+                        <button  class="btn btn-default" onclick="validateChecked()"  style="width: 100%; margin-top: 2%">회원가입</button>
                     </div>
                 </form>
             </div>
@@ -373,17 +373,27 @@
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
 
-    console.log("test", check_1.checked);
-    function validateCheck(){
-        if(check_1.checked == "") {
-            console.log("test-동의필요");
-            check_1.setCustomValidity("동의 체크를 해주세요.");
 
-        } else {
-            check_1.setCustomValidity('');
+
+    function validateChecked(){
+        var req = check_1.checked;
+        var req2 = check_2.checked;
+        var num = 0;
+        var num2 = 0;
+        if(req == true){
+            num = 1;
+        }
+
+        if(req2 == true){
+            num2 = 1;
+        }
+        if(num==1 && num2==1){
+            document.form.submit();
+        }else if(num !=1){
+            alert("이용약관 동의에 동의하셔야 합니다.");
+        }else{
+            alert("개인정보취급방침 동의에 동의하셔야 합니다.");
         }
     }
-    check_1.onchange = validateCheck;
-    check_1.onkeyup = validateCheck;
 
 </script>

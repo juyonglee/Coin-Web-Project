@@ -1,20 +1,7 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="ko">-->
-    <!--<head>-->
-        <!--<meta charset="utf-8">-->
-        <!--<title>COINPLACE - 로그인</title>-->
-    <!--</head>-->
-    <!--<body>-->
-        <!--<form method="POST" action="/account/signin">-->
-            <!--ID:<input type="text" name="username" value="goal0208"><br>-->
-            <!--Password:<input type="password" name="password" value="hello"><br>-->
-            <!--<input type="submit" value="Login">-->
-        <!--</form>-->
-    <!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
-<html lang="ko">
+
+<!-- define angular app -->
+<html ng-app="scotchApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,30 +73,30 @@
                 <form class="form-horizontal" method="POST" action="/account/signup">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
-
+                        <i class="fa fa-envelope-o"></i>
                         <input required=""  name="username" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-
+                        <i class="fa fa-lock"></i>
                         <input required="" id="password" name="password" type="password" class="form-control" placeholder="Password">
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password 확인</label>
-
+                        <i class="fa fa-lock"></i>
                         <input id="confirm_password" required="" name="password_check" type="password" class="form-control" placeholder="Password 확인">
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">이름</label>
-
+                        <i class="fa fa-user"></i>
                         <input required="" name="name" type="text" class="form-control" placeholder="이름">
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">핸드폰 번호</label>
-
+                        <i class="fa fa-phone"></i>
                         <input class="form-control" placeholder="010-0000-0000 형식으로 작성해주세요." type="tel" id="phone" name="phoneNumber"
                                pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                                required>
@@ -135,7 +122,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default" style="width: 100%; margin-top: 2%">회원가입</button>
+                        <button  class="btn btn-default" onclick="validateChecked()"  style="width: 100%; margin-top: 2%">회원가입</button>
                     </div>
                 </form>
             </div>
@@ -182,7 +169,6 @@
 
 <script>
     var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
-    var password2 = document.getElementById("password2"), confirm_password2 = document.getElementById("confirm_password2");
     var check_1 = document.getElementById("check_1"), check_2 = document.getElementById("check_2");
 
     function validatePassword(){
@@ -193,31 +179,28 @@
         }
     }
 
-    function validatePassword2(){
-        if(password2.value != confirm_password2.value) {
-            confirm_password2.setCustomValidity("비밀번호가 일치하지 않습니다.");
-        } else {
-            confirm_password2.setCustomValidity('');
-        }
-    }
-
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
 
-    password2.onchange = validatePassword2;
-    confirm_password2.onkeyup = validatePassword2;
+    function validateChecked(){
+        var req = check_1.checked;
+        var req2 = check_2.checked;
+        var num = 0;
+        var num2 = 0;
+        if(req == true){
+            num = 1;
+        }
 
-    console.log("test", check_1.checked);
-    function validateCheck(){
-        if(check_1.checked == "") {
-            console.log("test-동의필요");
-            check_1.setCustomValidity("동의 체크를 해주세요.");
-
-        } else {
-            check_1.setCustomValidity('');
+        if(req2 == true){
+            num2 = 1;
+        }
+        if(num==1 && num2==1){
+            document.form.submit();
+        }else if(num !=1){
+            alert("이용약관 동의에 동의하셔야 합니다.");
+        }else{
+            alert("개인정보취급방침 동의에 동의하셔야 합니다.");
         }
     }
-    check_1.onchange = validateCheck;
-    check_1.onkeyup = validateCheck;
 
 </script>
