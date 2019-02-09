@@ -73,11 +73,13 @@
                                                 <p style="color: #991108; padding-top: 2%"><b>1TOXI = 100원</b></p>
                                             </div>
                                         </div>
-                                        <form method="POST" action="/product/toxiPurchase" class="form-horizontal" style="margin-top: 5%">
+                                        <!-- <form method="POST" action="/product/toxiPurchase" class="form-horizontal" style="margin-top: 5%"></form> -->
+                                        <!-- <form method="POST" class="form-horizontal" style="margin-top: 5%"> -->
+                                        <div class="form-horizontal" style="margin-top: 5%">
                                             <div class="form-group">
                                                 <label for="inputEmail3" name="buy_count" class="col-sm-2 control-label">주문 수량</label>
                                                 <div class="col-sm-10">
-                                                    <input  style="width: 50%" type="number" class="form-control" id ="num"  onchange="resultFunction()" placeholder="직접 입력" min="1" value="1">
+                                                    <input  style="width: 50%" type="number" class="form-control" id ="num" placeholder="직접 입력" min="1" value="1">
                                                 </div>
                                             </div>
                                             <hr>
@@ -100,10 +102,11 @@
                                             </div>
                                             <div class="form-group" style="margin-top: 3%" >
                                                 <div>
-                                                    <button onclick="validateChecked()" class="btn btn-default blue center-block" >구매하기</button>
+                                                    <button id="purchaseButton" class="btn btn-default blue center-block" >구매하기</button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
+                                        <!-- </form> -->
 
                                         <div class="tab-pane" id="tab_default_2">
 
@@ -141,26 +144,19 @@
 
                         </th>
                     </tr>
-                    <tr>
-                        <td>
-                            구매일시
-                        </td>
-                        <td>
-                            종류
-                        </td>
-                        <td>
-                            금액
-                        </td>
-                        <td>
-                            처리상태
-                        </td>
-                        <td>
-                            입금계좌
-                        </td>
-                        <td>
-                            <button class="btn btn-default orange" >취소</button>
-                        </td>
-                    </tr>
+                    <% for(var i=0; i<buyInfo.length; i++) { %>
+                        <tr>  
+                            <td><%= moment(buyInfo[i].buy_date).format('YYYY-MM-DD hh:mm:ss') %></td>
+                            <td><%= buyInfo[i].coin_name %></td>
+                            <td><%= buyInfo[i].price * buyInfo[i].buy_count %></td>
+                            <td><%= buyInfo[i].buy_state %></td>
+                            <td>
+                                    <form onSubmit="if(!confirm('구매 취소하시겠습니까?')){return false;}" action="/manager/depositDelete/<%=buyInfo[i]._id%>" method="POST">
+                                        <button class="btn btn-default orange" type="submit">취소</button>
+                                    </form>
+                            </td>
+                        </tr>
+                    <% } %>
                 </table>
             </div></div>
     </div>
@@ -177,11 +173,11 @@
             <div class="modal-body text-center" >
                 <h4>감사합니다. 구매 신청 되었습니다.<br>
                     입금 확인 후 완료됩니다.</h4>
-                <ul>
-                    <li>수량 : </li>
-                    <li>총액: </li>
-                    <li>구매자: </li>
-                </ul>
+                <div>
+                    <p id="coin_num">수량 : </p>
+                    <p id="total_price">총액: </p>
+                    <p id="coin_user">구매자: </p>
+                <div>
 
                     <h4>ㅁㅁ 은행  111-11111-1111</h4>
                     <h4>예금주 코인플레이스</h4>
@@ -227,28 +223,50 @@
 </html>
 
 <script>
-
-    var check_1 = document.getElementById("check_1");
-    function resultFunction(){
-        var x = document.getElementById("num").value;
-        document.getElementById("result").value = x*100;
-
-    }
-
-    function validateChecked(){
-
-        var req = check_1.checked;
-        var num = 0;
-
-        if(req == true){
-            num = 1;
-        }
-        if(num==1){
-            document.form.submit();
-            $('#myModal').modal('show');
-        }else{
+$(document).ready(function(){
+    //  구매 수량 확인 
+    $(purchaseButton).click(function(){
+        if(document.getElementById("check_1").checked) {
+            if($(num).val()<=0) {
+                alert("구매 수량을 확인해 주세요.");
+            } else {
+                var queries = {};
+                $.each(document.location.search.substr(1).split('&'),function(c,q){
+                var i = q.split('=');
+                queries[i[0].toString()] = i[1].toString();
+                });
+                console.log(queries.coin);
+                $.post("/product/coinCheck", {coin: queries.coin, quantity: $(num).val()}, function(data, status){
+                    if(data.result == true) {
+                        console.log("Data: " + data.result + ", Statue: " + status);
+                        $.post("/product/coinPurchase", {coin: queries.coin, buy_count: $(num).val()}, function(coinData, coinStatus) {
+                            if(coinData.result == true) {
+                    //             <li id="coin_num">수량 : </li>
+                    // <li id="total_price">총액: </li>
+                    // <li id="coin_user">구매자: </li>
+                            // $(coin_user).val(req.user.);
+                                $('#coin_num').val($(num).val());
+                                $('total_price').val($(num).val()*100);
+                                $('#coin_user').val("HELLO");
+                                $('#myModal').modal('show');
+                            } else {
+                                alert("구매에 실패했습니다. 고객센터에 문의해주세요.");
+                            }
+                            
+                        });
+                    } else {
+                        alert("수량이 부족하여 구매하실 수 없습니다.");
+                    }
+                });
+            }
+        } else {
             alert("유의사항에 동의하셔야 합니다.");
         }
-    }
-
+    });
+    
+    //  가격 갱신 기능
+    $('#num').keyup(function(){
+        $("#result").val($(num).val()*100);
+    });
+});
 </script>
