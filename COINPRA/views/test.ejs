@@ -326,7 +326,7 @@
 <script>
     var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
     var check_1 = document.getElementById("check_1"), check_2 = document.getElementById("check_2");
-
+    var num3 = 0;
     function validatePassword(){
         if(password.value != confirm_password.value) {
             confirm_password.setCustomValidity("비밀번호가 일치하지 않습니다.");
@@ -352,13 +352,27 @@
         if(req2 == true){
             num2 = 1;
         }
-        if(num==1 && num2==1){
+        if(num==1 && num2==1 && num3==1){
             document.form.submit();
         }else if(num !=1){
             alert("이용약관 동의에 동의하셔야 합니다.");
-        }else{
+        }else if(num2 !=1) {
             alert("개인정보취급방침 동의에 동의하셔야 합니다.");
+        } else {
+            alert("이미 가입된 아이디입니다.");
         }
     }
-
+    
+    $('#exampleInputEmail1').keyup(function(){
+            $.post("/account/checkID", {ID: $(exampleInputEmail1).val()}, function(data, status){
+                if(data.result == null) {
+                    console.log("가입가능!");
+                    // console.log("Data: " + data.result + ", Status: " + status);
+                    num3=1;
+                } else {
+                    console.log("가입불가!");
+                    num3=0;
+                }
+            });
+        });
 </script>
