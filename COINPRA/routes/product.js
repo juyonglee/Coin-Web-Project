@@ -41,6 +41,7 @@ router.post('/toxiPurchase', function(req, res, next) {
         (product)=>{
             if(product.total_count >= req.body.buy_count) {
                 console.log("구매 가능");
+                console.log( product.coin_name);
                 //  구매내역 생성
                 buyInfo.create({coin_name: product.coin_name, price: req.body.buy_count * product.price, buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
                     (result)=> {
@@ -111,4 +112,68 @@ router.post('/pluPurchase', function(req, res, next) {
     );
 });
 
+router.post('/coinCheck', function(req, res, next) {
+    // res.send({result:"Hello"});
+    console.log(req.body.coin);
+    coinProduct.findOne({coin_name:req.body.coin}).then(
+        (product)=>{
+            if(product.total_count >= req.body.quantity) {
+                res.send({result:true});
+            } else {
+                res.send({result:false});
+            }
+        });
+});
+
+router.post('/coinPurchase', function(req, res, next){
+    console.log(req.body.coin);
+    coinProduct.findOne({coin_name: req.body.coin}).then(
+        (product)=>{
+                console.log("구매 가능");
+                //  구매내역 생성
+                buyInfo.create({coin_name: product.coin_name, price: req.body.buy_count * product.price, buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
+                    (result)=> {
+                        //  사용자 판매기록
+                        //  구매 후 개수 올리면 안됨!! -> 입금 후 개수 증가~
+                        Account.update({username:req.user.username}, {$push: {buy_info:result.id}}).then( 
+                            (result)=>{
+                                res.send({result: true});
+                            },
+                            (err)=>{
+                                res.send({result: false});
+                            }
+                        )
+                    },
+                    (err)=> {
+                        console.log("구매 실패!");
+                        res.send({result: false});
+                    }
+                );
+        },
+        (err)=>{
+            console.log(err);
+            next(err);
+        }
+    );
+    // //  구매내역 생성
+    // buyInfo.create({coin_name: product.coin_name, price: req.body.buy_count * product.price, buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
+    //     (result)=> {
+    //         //  사용자 판매기록
+    //         //  구매 후 개수 올리면 안됨!! -> 입금 후 개수 증가~
+    //         Account.update({username:req.user.username}, {$push: {buy_info:result.id}}).then( 
+    //             (result)=>{
+    //                 console.log("구매 성공!");
+    //                 res.redirect('/');
+    //             },(err)=>{
+    //                 console.log("구매 Error");
+    //                 res.redirect('/');
+    //             }
+    //             )},
+    //             (err)=> {
+    //                 console.log("구매 실패!");
+    //                     console.log(err);
+    //                     res.redirect('/');
+    //                 }
+    //             );
+});
 module.exports = router;
