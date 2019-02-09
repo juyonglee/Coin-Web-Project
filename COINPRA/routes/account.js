@@ -54,6 +54,13 @@ router.get('/changePassword', function(req, res, next) {
     }
 });
 
+//  가입 여부를 Check하는데 과련된 Router
+router.post('/checkID', function(req, res, next){
+    Account.findOne({username: req.body.ID}, function(err, result){
+        res.send({result:result});
+    })
+});
+
 router.post('/changePassword', function(req, res, next) {
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
