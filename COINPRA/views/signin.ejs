@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <i class="fa fa-envelope-o"></i>
-                        <input required=""  name="username" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <input required=""  name="username" type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
@@ -169,6 +169,8 @@
 <script>
     var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
     var check_1 = document.getElementById("check_1"), check_2 = document.getElementById("check_2");
+    //  ID Check Value
+    var num3 = 0; 
 
     function validatePassword(){
         if(password.value != confirm_password.value) {
@@ -186,6 +188,7 @@
         var req2 = check_2.checked;
         var num = 0;
         var num2 = 0;
+        
         if(req == true){
             num = 1;
         }
@@ -193,13 +196,32 @@
         if(req2 == true){
             num2 = 1;
         }
-        if(num==1 && num2==1){
+
+        if(num==1 && num2==1 && num3==1){
             document.form.submit();
         }else if(num !=1){
             alert("이용약관 동의에 동의하셔야 합니다.");
-        }else{
+        }else if(num2 !=1) {
             alert("개인정보취급방침 동의에 동의하셔야 합니다.");
+        } else if(num3 !=1) {
+            alert("이미 가입된 ID입니다.");
         }
     }
 
+    // ID Check 
+    $(document).ready(function(){
+        //  ID Check
+        $('#exampleInputEmail2').keyup(function(){
+            $.post("/account/checkID", {ID: $(exampleInputEmail2).val()}, function(data, status){
+                if(data.result == null) {
+                    console.log("가입가능!");
+                    // console.log("Data: " + data.result + ", Status: " + status);
+                    num3=1;
+                } else {
+                    console.log("가입불가!");
+                    num3=0;
+                }
+            });
+        });
+    });
 </script>

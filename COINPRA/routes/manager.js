@@ -144,7 +144,7 @@ router.post('/depositDelete/:user_id', function(req, res, next) {
                     next(err);
                 }
             });
-            res.redirect("../deposits");
+            res.redirect("/salelist/detail");
         });
         
     });
