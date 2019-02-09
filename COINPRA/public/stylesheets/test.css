@@ -43,7 +43,7 @@ body {
     background-size: cover;
 }
 .content {
-    width: 94%;
+    width: 100%;
     margin: 4em auto;
     font-size: 20px;
     line-height: 30px;
@@ -114,38 +114,191 @@ nav ul li a {
     color: #fff;
     display: none;
 }
+#login_img{
+    width: 35%;
+    margin-right: 4%;
+}
+
+#mainlogo{
+    width: 80%
+}
+
+#login_text{
+   font-size: 20px;
+}
+
+#basic_text{
+    color: #eee;
+    font-size: 22px;
+    z-index: 1;
+    font-weight: 300
+
+}
+
+#blue_text{
+    color: #4285e9;
+    font-size: 24px;
+    z-index: 1;
+    font-weight: 400;
+}
+#yellow_text{
+    color: #c8b801;
+    font-size: 24px;
+    z-index: 1;
+    font-weight: 400;
+}
+#small_text{
+    color: #ffffff;
+    font-size: 14px;
+    z-index: 1;
+    font-weight: 300
+}
+
+#sale_text{
+    color: #eee;
+    font-size: 20px;
+    z-index: 1;
+    font-weight: 300;
+    width: 20%;
+}
+
+#toxi_text{
+    color: #c8b801;
+    font-size: 15px;
+    z-index: 1;
+    float: right;
+}
+
+#plu_text{
+    color: #02a3f1;
+    font-size: 15px;
+    z-index: 1;
+}
+
+#big_event_img{
+    height:50vh
+}
+
+#dark_text{
+    color: #b9b9b9;
+    font-size: 16px;
+    z-index: 1;
+    font-weight: 300
+}
+
+#coin_join{
+    font-size: 20px;
+    margin-top: 3%;
+}
+
+#coin_img{
+    width: 50%
+}
+
 
 @media(max-width: 786px) {
-
-    .logo {
-          position: fixed;
-          top: 0;
-          margin-top: 16px;
+    #table_row{
+        margin-top: 20vh;
+    }
+    #krw{
+        font-size: 10px;
+    }
+    #coin_img{
+        margin-top: 30vh;
+        width: 72%
     }
 
-    nav ul {
-          max-height: 0px;
-          background: #000;
+    #coin_join{
+        font-size: 10px;
+        margin-top: 9%;
+    }
+    #dark_text{
+        color: #b9b9b9;
+        font-size: 10px;
+        z-index: 1;
+        font-weight: 300
     }
 
-    nav.black ul {
-          background: #000;
+    #big_event_img{
+        height:30vh
     }
 
-    .showing {
-          max-height: 34em;
+
+    #login_img{
+        width: 25%;
+
+    }
+
+    #login_text{
+        margin-left: 3%;
+        font-size: 16px;
+    }
+
+    #mainlogo{
+        width: 50%
+    }
+
+    .menu li{
+        margin-left: -15%;
     }
 
     nav ul li {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 24px;
-          text-align: center;
+          /*box-sizing: border-box;*/
+          /*width: 100%;*/
+        margin-left: -2%;
+          padding: 5px 10px;
+          text-align: right;
     }
 
-    .menu-icon {
-          display: block;
+    #basic_text{
+        color: #eee;
+        font-size: 14px;
+        z-index: 1;
+        font-weight: 300
     }
+    #blue_text{
+        color: #4285e9;
+        font-size: 14px;
+        z-index: 1;
+        font-weight: 400;
+    }
+    #yellow_text{
+        color: #c8b801;
+        font-size: 14px;
+        z-index: 1;
+        font-weight: 400;
+    }
+    #small_text{
+        color: #ffffff;
+        font-size: 12px;
+        z-index: 1;
+        font-weight: 300
+    }
+    #bac_img{
+        width: 70px;
+    }
+
+    #sale_text{
+        color: #eee;
+        font-size: 12px;
+        z-index: 1;
+        font-weight: 300;
+        width: 40%;
+    }
+
+    #toxi_text{
+        color: #c8b801;
+        font-size: 11px;
+        z-index: 1;
+        float: right;
+    }
+
+    #plu_text{
+        color: #02a3f1;
+        font-size: 11px;
+        z-index: 1;
+    }
+
 
 }
 
