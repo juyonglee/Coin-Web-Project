@@ -194,7 +194,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">입금완료</button>
+                <button type="button" class="btn btn-primary" onclick="saleButton()">입금완료</button>
             </div>
         </div>
     </div>
@@ -228,6 +228,9 @@
 </html>
 
 <script>
+    function saleButton() {
+        location.reload();
+    }
 $(document).ready(function(){
     //  구매 수량 확인 
     $(purchaseButton).click(function(){
