@@ -214,9 +214,9 @@ router.get('/addsales', function(req, res, next) {
 
 router.get('/coinmenu', function(req, res, next){
     // if(req.user) {
-        res.render('coinInfo', {currentData: 'Hello'});
+        res.render('coinInfo', {currentData: 'Hello', moment});
     // } else {
-        res.redirect(`/manager/`);
+        // res.redirect(`/manager/`);
     // }
 });
 
