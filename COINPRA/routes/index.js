@@ -24,4 +24,10 @@ router.get('/TOXIINFO', function(req, res, next){
   res.send(data);
 });
 
+router.get('/popup', function(req, res, next){
+  var data =fs.readFileSync('public/images/popupImg.png');
+  res.contentType("image/png");
+  res.send(data);
+});
+
 module.exports = router;
