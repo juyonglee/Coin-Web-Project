@@ -4,6 +4,37 @@ var buyInfo = require('../models/buyInfo');
 var coinProduct = require('../models/coinProduct');
 var Account = require('../models/account');
 
+router.post('/pluCoinCreation', function(req, res, next) {
+    console.log(req.body);
+    coinProduct.create({round: req.body.round, coin_name: 'PLU',
+        price: req.body.price,
+        total_count: req.body.amount,
+        selling_count: 0}).then(
+            (result)=>{
+                res.redirect('/manager/coinmenu');  
+            },
+            (err)=>{
+                res.redirect('/manager/coinmenu');
+            }
+        )}
+);
+
+router.post('/toxiCoinCreation', function(req, res, next) {
+    console.log(req.body);
+    coinProduct.create({round: req.body.round, coin_name: 'TOXI',
+        price: req.body.price,
+        total_count: req.body.amount,
+        selling_count: 0}).then(
+            (result)=>{
+                res.redirect('/manager/coinmenu');  
+            },
+            (err)=>{
+                res.redirect('/manager/coinmenu');
+            }
+        )}
+);
+
+
 router.get('/toxiCreate', function(req, res, next) {
     coinProduct.create({round: 2, coin_name: "TOXI",
         price: 100,
