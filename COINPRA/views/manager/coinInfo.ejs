@@ -74,10 +74,19 @@
                           <th>차수</th>
                           <th>coin종류</th>
                           <th>IEO가격</th>
+                          <th>발행량</th>
                           <th>판매수량</th>
-                          <th>확인</th>
                       </tr>
                     </thead>
+                    <% for(var i=0; i<currentData.length; i++) { %>
+                    <tbody>
+                        <td><%= currentData[i].round %></td>
+                        <td><%= currentData[i].coin_name %></td>
+                        <td><%= currentData[i].price %></td>
+                        <td><%= currentData[i].total_count %></td>
+                        <td><%= currentData[i].selling_count %></td>
+                    </tbody>
+                    <% } %>
                   </table>
                   
               </div>

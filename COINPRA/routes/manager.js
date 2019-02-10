@@ -214,7 +214,14 @@ router.get('/addsales', function(req, res, next) {
 
 router.get('/coinmenu', function(req, res, next){
     // if(req.user) {
-        res.render('coinInfo', {currentData: 'Hello', moment});
+        TOTALCOININFO.find({}, function(err, data){
+            if(err) {
+                console.log("ERROR 발생!");
+            } else {
+                console.log(data);
+                res.render('coinInfo', {currentData: data, moment});
+            }
+        });
     // } else {
         // res.redirect(`/manager/`);
     // }
