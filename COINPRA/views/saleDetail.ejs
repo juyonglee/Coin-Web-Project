@@ -146,10 +146,12 @@
                     </tr>
                     <% for(var i=0; i<buyInfo.length; i++) { %>
                         <tr>  
-                            <td><%= moment(buyInfo[i].buy_date).format('YYYY-MM-DD hh:mm:ss') %></td>
+                            <!-- <td><%= moment(buyInfo[i].buy_date).format('YYYY-MM-DD hh:mm:ss') %></td> -->
+                            <td><%= moment(buyInfo[i].buy_date).format('YYYY-MM-DD hh:mm') %></td>
                             <td><%= buyInfo[i].coin_name %></td>
                             <td><%= buyInfo[i].price * buyInfo[i].buy_count %></td>
-                            <td><%= buyInfo[i].buy_state %></td>
+                            <!-- <td><%= buyInfo[i].buy_state %></td> -->
+                            <td>입금대기</td>
                             <td>
                                     <form onSubmit="if(!confirm('구매 취소하시겠습니까?')){return false;}" action="/manager/depositDelete/<%=buyInfo[i]._id%>" method="POST">
                                         <button class="btn btn-default orange" type="submit">취소</button>
