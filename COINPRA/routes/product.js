@@ -114,13 +114,17 @@ router.post('/pluPurchase', function(req, res, next) {
 
 router.post('/coinCheck', function(req, res, next) {
     // res.send({result:"Hello"});
-    console.log(req.body.coin);
+    // console.log(req.body.coin);
     coinProduct.findOne({coin_name:req.body.coin}).then(
         (product)=>{
-            if(product.total_count >= req.body.quantity) {
-                res.send({result:true});
-            } else {
+            if(product == null) {
                 res.send({result:false});
+            } else {
+                if(product.total_count >= req.body.quantity) {
+                    res.send({result:true});
+                } else {
+                    res.send({result:false});
+                }
             }
         });
 });
