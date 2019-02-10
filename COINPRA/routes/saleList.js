@@ -19,7 +19,7 @@ router.get('/detail', function(req, res, next) {
     // if(req.user) {
         // console.log(req.user.username);
         //req.user.username
-        Account.findOne({username: 'goal0208@naver.com'}).populate({path:'buy_info', model:BuyInfo}).exec((err, member) => {
+        Account.findOne({username: req.user.username}).populate({path:'buy_info', model:BuyInfo}).exec((err, member) => {
             if(err) {
                 console.log("User가 존재하지 않습니다.");
                 next(err);
