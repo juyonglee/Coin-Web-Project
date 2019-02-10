@@ -141,7 +141,7 @@ router.post('/coinPurchase', function(req, res, next){
                         //  구매 후 개수 올리면 안됨!! -> 입금 후 개수 증가~
                         Account.update({username:req.user.username}, {$push: {buy_info:result.id}}).then( 
                             (result)=>{
-                                res.send({result: true});
+                                res.send({result: true, name: req.user.username, price: req.body.buy_count * product.price, buy_count: req.body.buy_count});
                             },
                             (err)=>{
                                 res.send({result: false});
