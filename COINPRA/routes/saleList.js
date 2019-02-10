@@ -27,9 +27,16 @@ router.get('/detail', function(req, res, next) {
                 // [유정이] - Property와 변수의 이름이 같으면 문제가 생깁니다.
                 // const member ={sequence: req., name: "jungee", email: "junge2",phone:"0000", plu:0, fnb: 1};
                 //  [유정이] - Hover로 부탁드려요!
-                console.log(req.query.coin);
-                console.log("User가 존재합니다.");
-                console.log(member);
+                // console.log(req.query.coin);
+                // console.log("User가 존재합니다.");
+                var totalInfo = [];
+                console.log(member.buy_info);
+                for(var i=0; i<member.buy_info.length; i++) {
+                    // console.log(member.buy_info[i].buy_state);
+                    if(member.buy_info[i].buy_state == false) {
+                        totalInfo.push(member.buy_info[i]);
+                    }
+                }
                 res.render('saleDetail', { buyInfo: member.buy_info, moment});
             }
         }); 
