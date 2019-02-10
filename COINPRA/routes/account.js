@@ -61,6 +61,20 @@ router.post('/checkID', function(req, res, next){
     })
 });
 
+router.post('/checkPASSWORD', function(req, res, next) {
+    Account.findOne({username:req.body.user}, function(err, result){
+        crypto.pbkdf2(req.body.password, result.salt.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
+            if(result.password.toString('base64') === derivedKey.toString('base64')) {
+                res.send({result:true});
+            } else {
+                res.send({result:false});
+            }
+        });
+    });
+
+});
+
+
 router.post('/changePassword', function(req, res, next) {
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {

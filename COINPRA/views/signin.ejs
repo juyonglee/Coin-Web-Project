@@ -40,19 +40,21 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <form  style="margin-top: 30%" form method="POST" action="/account/signin" class="form-horizontal horizontal">
+                <!-- <div style="margin-top: 30%" class="form-horizontal horizontal"> -->
                     <span class="heading">로그인</span>
                     <div class="form-group">
                         <input required="" name="username"  type="email" class="form-control" id="exampleInputEmail1" placeholder="Email 입력">
                     </div>
                     <div class="form-group">
-                        <input required="" name="password" type="password" class="form-control" placeholder="Password 입력">
+                        <input required="" id="passwordInput" name="password" type="password" class="form-control" placeholder="Password 입력">
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" value="Login" class="btn btn-default">login</button>
+                        <button type="submit" id="LoginBtn" value="Login" class="btn btn-default">login</button>
                     </div>
                     <p style="color: #eeee">아직 계정이 없으신가요?  &nbsp;&nbsp;&nbsp;<a data-target="#signupmodal" data-toggle="modal" style="font-weight: 200">회원가입</a></p>
                     <p style="color: #eeee">로그인에 문제가 있으신가요? &nbsp;&nbsp;&nbsp; <a data-target="#changepass" data-toggle="modal" style="font-weight: 200">패스워드 재설정</a></p>
+                <!-- </div> -->
                 </form>
             </div>
             <div class="col-md-3"></div>
@@ -223,5 +225,29 @@
                 }
             });
         });
+        //  Check
+        $('#LoginBtn').click(function(){
+            console.log("뚜룹뚜룹뚜룹!")
+            // $('#exampleInputEmail1').keyup(function(){
+            $.post("/account/checkID", {ID: $(exampleInputEmail1).val()}, function(data, status){
+                if(data.result == null) {
+                    // console.log("아이디가 존재하지 않습니다.");
+                    alert("ID 및 PASSWORD를 확인해 주세요!");
+                } else {
+                    // console.log("아이디 존재 - PASSWORD 확인");
+                    console.log($(passwordInput).val());
+                    $.post("/account/checkPASSWORD", {password: $(passwordInput).val(), user: $(exampleInputEmail1).val()}, function(data, status){
+                        if(data.result == false) {
+                            console.log("로그인 실패");
+                            alert("ID 및 PASSWORD를 확인해 주세요!");
+                        } else {
+                            console.log("로그인 성공");
+                        }
+                    });
+                }
+            });
+        });
+            
+        // });
     });
 </script>
