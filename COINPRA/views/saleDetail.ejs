@@ -238,6 +238,9 @@ $(document).ready(function(){
                 var queries = {};
                 $.each(document.location.search.substr(1).split('&'),function(c,q){
                 var i = q.split('=');
+                console.log("*****");
+                console.log(i);
+                console.log("*****");
                 queries[i[0].toString()] = i[1].toString();
                 });
                 console.log(queries.coin);

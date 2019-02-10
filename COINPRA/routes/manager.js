@@ -127,7 +127,6 @@ router.post('/depositConfirm/:user_id', function(req, res, next) {
 });
 
 router.post('/depositDelete/:user_id', function(req, res, next) {
-
     BuyInfo.findOne({_id:req.params.user_id}).exec((err, result)=> {
         if(err) {
             console.log(err);
@@ -144,7 +143,7 @@ router.post('/depositDelete/:user_id', function(req, res, next) {
                     next(err);
                 }
             });
-            res.redirect("/salelist/detail");
+            res.redirect("/salelist");
         });
         
     });
