@@ -30,7 +30,7 @@ router.get('/detail', function(req, res, next) {
                 // console.log(req.query.coin);
                 // console.log("User가 존재합니다.");
                 var totalInfo = [];
-                console.log(member.buy_info);
+                // console.log(member.buy_info);
                 for(var i=0; i<member.buy_info.length; i++) {
                     // console.log(member.buy_info[i].buy_state);
                     if(member.buy_info[i].buy_state == false) {
