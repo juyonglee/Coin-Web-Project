@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 // 1-3 페이지
 router.get('/detail', function(req, res, next) {    
-    // if(req.user) {
+    if(req.user) {
         // console.log(req.user.username);
         //req.user.username
         Account.findOne({username: req.user.username}).populate({path:'buy_info', model:BuyInfo}).exec((err, member) => {
@@ -33,9 +33,9 @@ router.get('/detail', function(req, res, next) {
                 res.render('saleDetail', { buyInfo: member.buy_info, moment});
             }
         }); 
-    // } else {
-        // res.redirect(`/account/signin`);
-    // }
+    } else {
+        res.redirect(`/account/signin`);
+    }
 });
 
 router.post('/depositDelete/:user_id', function(req, res, next) {
