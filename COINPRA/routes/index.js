@@ -4,12 +4,13 @@ var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // if(req.user) {
-  //   res.render('index', { title: "안녕하세요, " + req.user.username + "님"});
-  // } else {
-  //   res.render('index', { title: 'Express'});
-  // }
-  res.render('test');
+  if(req.session.passport) {
+    // 1) 세션 존재하는 경우, user 넘기기 
+    res.render('test', {user: req.session.passport.user});
+  }else {
+    // 2) 세션 없는 경우, false 넘기기 
+    res.render('test', {user: "false"});
+  }
 });
 
 router.get('/PLUINFO', function(req, res, next){

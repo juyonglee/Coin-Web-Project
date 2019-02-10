@@ -39,7 +39,11 @@
             </div>
             <div class="menu" style="width: 100%">
                 <ul style="width: 100%">
+                    <% if(user=="false") { %>
                     <li><img id="login_img" src="images/logo/contents_mainloginicon.png"><a href="/account/signin" id="login_text" >로그인</a></li>
+                        <% }else {%>
+                            <li><img id="login_img" src="images/logo/contents_mainloginicon.png"><a href="/account/logout" id="login_text" >로그아웃</a></li>
+                        <%}%>
                 </ul>
             </div>
         </nav>

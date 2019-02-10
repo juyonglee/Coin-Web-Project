@@ -8,7 +8,7 @@ var moment = require('moment');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     if(req.user) {
-        res.render('saleList', { title: "test"});
+        res.render('saleList', {user: req.session.passport.user});
     } else {
         res.redirect(`/account/signin`);
     }

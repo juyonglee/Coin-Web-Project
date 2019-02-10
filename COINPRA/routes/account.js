@@ -36,6 +36,16 @@ router.post('/signin', passport.authenticate('local', { successRedirect: '/', fa
 //  로그아웃에 관련된 Router (GET)
 router.get('/logout', function(req, res, next) {
     req.logout();
+    // 로그아웃 하는 경우 세션 제거하기
+    req.session.destroy(function(err) {
+            if (err) {
+                console.log(err)
+            }
+            // res.send("<script>alert('Logout!'); location.href='/';</script>");
+        console.log("로그아웃됨");
+        }
+
+    );
     res.redirect('/');
 });
 
