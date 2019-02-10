@@ -212,6 +212,14 @@ router.get('/addsales', function(req, res, next) {
     }
 });
 
+router.get('/coinmenu', function(req, res, next){
+    // if(req.user) {
+        res.render('coinInfo', {currentData: 'Hello'});
+    // } else {
+        res.redirect(`/manager/`);
+    // }
+});
+
 router.get('/managermenu', function(req, res, next) {
     if(req.user) {
         const menuInfo ={manager1: 'nandogas', manager2: 'nono1314'};
