@@ -246,25 +246,13 @@ $(document).ready(function(){
                         console.log("Data: " + data.result + ", Statue: " + status);
                         $.post("/product/coinPurchase", {coin: queries.coin, buy_count: $(num).val()}, function(coinData, coinStatus) {
                             if(coinData.result == true) {
-                    //             <li id="coin_num">수량 : </li>
-                    // <li id="total_price">총액: </li>
-                    // <li id="coin_user">구매자: </li>
-                            // $(coin_user).val(req.user.);
-                            //  유정아 이게 데이터야 
-                            //  구매자
-                                console.log(coinData.name);
-                            //  수량
-                                console.log(coinData.buy_count);
-                            //  가격
-                                console.log(coinData.price);
-                                $('#coin_num').val($(num).val());
-                                $('total_price').val($(num).val()*100);
-                                $('#coin_user').val("HELLO");
+                                $('#coin_num').text("수량: " + $(num).val() + "개");
+                                $('#total_price').text("가격: " + $(num).val()*100 + "원");
                                 $('#myModal').modal('show');
+                                $('#coin_user').text(coinData.name);
                             } else {
                                 alert("구매에 실패했습니다. 고객센터에 문의해주세요.");
                             }
-                            
                         });
                     } else {
                         alert("수량이 부족하여 구매하실 수 없습니다.");
