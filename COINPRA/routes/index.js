@@ -30,4 +30,17 @@ router.get('/popup', function(req, res, next){
   res.send(data);
 });
 
+router.get('/personalInfo', function(req, res, next){
+  var data =fs.readFileSync('public/pdf/personal.pdf');
+  res.contentType("application/pdf");
+  res.send(data);
+});
+
+router.get('/usageInfo', function(req, res, next){
+  var data =fs.readFileSync('public/pdf/usageInfo.pdf');
+  res.contentType("application/pdf");
+  res.send(data);
+});
+
+
 module.exports = router;
