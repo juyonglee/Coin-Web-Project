@@ -27,7 +27,7 @@
                 <i class="fa fa-bars fa-2x"></i>
             </div>
             <div class="logo">
-                <a  href="/"><img style="width: 75%" src="../images/logo/contents_mainlogo.png"></a>
+                <a  href="/"><img id="mainlogo"  src="../images/logo/contents_mainlogo.png"></a>
             </div>
 
         </nav>
@@ -133,7 +133,7 @@
 </div>
 
 <!-- 비번 변경 모달 -->
-<div class="modal fade" id="changepass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<div class="modal fade" id="changepass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"   >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -169,6 +169,10 @@
 </html>
 
 <script>
+    $('#signupmodal').on('shown.bs.modal', function () {
+        keyboard : true;
+    });
+
     var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
     var check_1 = document.getElementById("check_1"), check_2 = document.getElementById("check_2");
     //  ID Check Value
