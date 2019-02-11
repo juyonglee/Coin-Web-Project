@@ -44,7 +44,7 @@ header {
 }
 
 nav {
-    z-index: 9999;
+    z-index: 1;
     position: fixed;
     width: 100%;
     line-height: 60px;
