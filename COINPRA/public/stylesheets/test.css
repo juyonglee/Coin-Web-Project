@@ -206,8 +206,8 @@ nav ul li a {
 #big-row{
     height: 60vh;
     width:50%; opacity: 0.9;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     background: #333333;
 }
 
