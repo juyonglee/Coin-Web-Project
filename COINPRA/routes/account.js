@@ -31,7 +31,30 @@ router.get('/signin', function(req, res, next) {
     res.render('signin', { title: 'Express' });
 });
 
-router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin' }));
+// router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin' }));
+
+router.post('/signin', function(req, res, next) {
+    passport.authenticate('local', function (error, user, info){
+
+        // A error also means, an unsuccessful login attempt
+        if(error) {
+            console.error(error);
+            console.log('Failed login:');
+            // And do whatever you want here.
+            return next(new Error('AuthenticationError'), req, res);
+        }
+
+        if (user === false) {
+            // handle login error ...
+            console.log('Failed login:');
+            return next(new Error('AuthenticationError'), req, res);
+        } else {
+            // handle successful login ...
+            console.log('Successful login:');
+            res.redirect('/');
+        }
+    })(req, res, next);
+});
 
 //  로그아웃에 관련된 Router (GET)
 router.get('/logout', function(req, res, next) {
