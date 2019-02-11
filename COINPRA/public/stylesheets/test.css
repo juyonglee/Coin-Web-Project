@@ -124,6 +124,7 @@ nav ul li a {
 }
 
 #login_text{
+    font-weight: 400;
     margin-left: -3%;
    font-size: 18px;
 }
@@ -132,7 +133,7 @@ nav ul li a {
     color: #eee;
     font-size: 22px;
     z-index: 1;
-    font-weight: 300
+    font-weight: 550
 
 }
 
@@ -140,26 +141,26 @@ nav ul li a {
     color: #4285e9;
     font-size: 24px;
     z-index: 1;
-    font-weight: 400;
+    font-weight: 550;
 }
 #yellow_text{
     color: #c8b801;
     font-size: 24px;
     z-index: 1;
-    font-weight: 400;
+    font-weight: 550;
 }
 #small_text{
     color: #ffffff;
     font-size: 14px;
     z-index: 1;
-    font-weight: 300
+    font-weight: 400
 }
 
 #sale_text{
     color: #eee;
     font-size: 20px;
     z-index: 1;
-    font-weight: 300;
+    font-weight: 500;
     width: 20%;
 }
 
@@ -184,16 +185,22 @@ nav ul li a {
     color: #b9b9b9;
     font-size: 16px;
     z-index: 1;
-    font-weight: 300
+    font-weight: 400
 }
 
 #coin_join{
+    font-weight: 500;
     font-size: 20px;
     margin-top: 3%;
 }
 
 #coin_img{
     width: 50%
+}
+
+#krw{
+    font-size: 20px;
+    font-weight: 400
 }
 
 
