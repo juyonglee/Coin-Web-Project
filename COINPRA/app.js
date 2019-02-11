@@ -46,9 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  Passport Setup & Seesion 사용을 위한 express-session 추가
 app.use(require('express-session')({
   secret: 'keyboard cat',
-  resave: false,
+  resave: true,
   cookie : {secure : false},
-  saveUninitialized: false})
+  saveUninitialized: true})
 );
 app.use(passport.initialize());
 app.use(passport.session());
