@@ -166,7 +166,7 @@ router.post('/coinPurchase', function(req, res, next){
         (product)=>{
                 console.log("구매 가능");
                 //  구매내역 생성
-                buyInfo.create({coin_name: product.coin_name, price: req.body.buy_count * product.price, buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
+                buyInfo.create({coin_name: product.coin_name, price: parseInt(req.body.buy_count) * parseInt(product.price), buy_count: req.body.buy_count, buy_state: false, buyer:req.user._id}).then(
                     (result)=> {
                         //  사용자 판매기록
                         //  구매 후 개수 올리면 안됨!! -> 입금 후 개수 증가~

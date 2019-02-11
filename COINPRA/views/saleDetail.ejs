@@ -79,14 +79,14 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" name="buy_count" class="col-sm-2 control-label">주문 수량</label>
                                                 <div class="col-sm-10">
-                                                    <input  style="width: 50%" type="number" class="form-control" id ="num" placeholder="직접 입력" min="1" value="1">
+                                                    <input  style="width: 50%" type="text" class="form-control" id ="num" placeholder="직접 입력" min="1" value="1">
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="form-group">
                                                 <label  class="col-sm-2 control-label">주문 총액</label>
                                                 <div class="col-sm-10">
-                                                    <input style="width: 50%" class="form-control" id ="result" type="number" value="100" readonly>
+                                                    <input style="width: 50%" class="form-control" id ="result" type="text" value="100원" readonly>
                                                 </div>
                                             </div>
                                             <div class="well">
@@ -149,7 +149,8 @@
                             <!-- <td><%= moment(buyInfo[i].buy_date).format('YYYY-MM-DD hh:mm:ss') %></td> -->
                             <td><%= moment(buyInfo[i].buy_date).format('YYYY-MM-DD hh:mm') %></td>
                             <td><%= buyInfo[i].coin_name %></td>
-                            <td><%= buyInfo[i].price * buyInfo[i].buy_count %></td>
+                            <% console.log(buyInfo[i].price, buyInfo[i].buy_count); %>
+                            <td><%= buyInfo[i].price %></td>
                             <!-- <td><%= buyInfo[i].buy_state %></td> -->
                             <td>입금대기</td>
                             <td>
@@ -235,7 +236,7 @@ $(document).ready(function(){
     //  구매 수량 확인 
     $(purchaseButton).click(function(){
         if(document.getElementById("check_1").checked) {
-            if($(num).val()<=0) {
+            if(uncomma($(num).val())<=0) {
                 alert("구매 수량을 확인해 주세요.");
             } else {
                 var queries = {};
@@ -244,13 +245,14 @@ $(document).ready(function(){
                 queries[i[0].toString()] = i[1].toString();
                 });
 
-                $.post("/product/coinCheck", {coin: queries.coin, quantity: $(num).val()}, function(data, status){
+                $.post("/product/coinCheck", {coin: queries.coin, quantity: uncomma($(num).val())}, function(data, status){
                     if(data.result == true) {
                         console.log("Data: " + data.result + ", Statue: " + status);
-                        $.post("/product/coinPurchase", {coin: queries.coin, buy_count: $(num).val()}, function(coinData, coinStatus) {
+                        console.log("Count: " +uncomma($(num).val()));
+                        $.post("/product/coinPurchase", {coin: queries.coin, buy_count: uncomma($(num).val())}, function(coinData, coinStatus) {
                             if(coinData.result == true) {
                                 $('#coin_num').text("수량: " + $(num).val() + "개");
-                                $('#total_price').text("가격: " + $(num).val()*100 + "원");
+                                $('#total_price').text("가격: " + $(result).val());
                                 $('#myModal').modal('show');
                                 $('#coin_user').text(coinData.name);
                             } else {
@@ -267,6 +269,38 @@ $(document).ready(function(){
         }
     });
     
+    //  가격 갱신 기능
+    $('#num').keyup(function(){
+        // comma()
+        $("#num").val(comma(uncomma($(num).val())));
+        $("#result").val(comma(uncomma($(num).val())*100)+ "원");
+    });
+       
+    //콤마찍기
+    function comma(str) {
+        str = String(str);
+        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    }
+ 
+    //콤마풀기
+    function uncomma(str) {
+        str = String(str);
+        return str.replace(/[^\d]+/g, '');
+    }
+ 
+    //숫자만 리턴(저장할때)
+    function cf_getNumberOnly (str) {
+        var len      = str.length;
+        var sReturn  = "";
+ 
+        for (var i=0; i<len; i++){
+            if ( (str.charAt(i) >= "0") && (str.charAt(i) <= "9") ){
+                sReturn += str.charAt(i);
+            }
+        }
+        return sReturn;
+    }
+
     function comma(num){
         var len, point, str; 
         num = num + ""; 
@@ -281,15 +315,6 @@ $(document).ready(function(){
         } 
         return str;
     }
-
-    //  가격 갱신 기능
-    $('#num').keyup(function(){
-        var data = comma($(num).val()*100)
-        console.log(data);
-        $("#result").val( ""+ data + "원");
-    });
-
-
-
+    
 });
 </script>
