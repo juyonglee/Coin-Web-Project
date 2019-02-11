@@ -281,10 +281,12 @@ $(document).ready(function(){
         } 
         return str;
     }
-    
+
     //  가격 갱신 기능
     $('#num').keyup(function(){
-        $("#result").val(comma($(num).val()*100) + "원");
+        var data = comma($(num).val()*100)
+        console.log(data);
+        $("#result").val( data+ "원");
     });
 
 
