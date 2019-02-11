@@ -257,10 +257,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button href="#" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
-            <div class="modal-body"  style="padding-left: 5%; padding-right: 5%">
+            <div class="modal-body"  style="padding-left: 5%; padding-right: 5%;">
                 <form class="form-horizontal" method="POST" action="/account/signup">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
@@ -288,7 +288,7 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">핸드폰 번호</label>
                         <i class="fa fa-phone"></i>
-                        <input class="form-control" placeholder="010-0000-0000 형식으로 작성해주세요." type="tel" id="phone" name="phoneNumber"
+                        <input class="form-control" placeholder="010-0000-0000 형식으로 작성해주세요." type="text" id="phone" name="phoneNumber"
                                pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                                required>
                         <!--<input required="" name="phoneNumber" type="number" >-->
@@ -367,11 +367,8 @@
     $('#exampleInputEmail1').keyup(function(){
             $.post("/account/checkID", {ID: $(exampleInputEmail1).val()}, function(data, status){
                 if(data.result == null) {
-                    console.log("가입가능!");
-                    // console.log("Data: " + data.result + ", Status: " + status);
                     num3=1;
                 } else {
-                    console.log("가입불가!");
                     num3=0;
                 }
             });
