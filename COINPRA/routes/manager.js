@@ -14,16 +14,16 @@ router.get('/', function(req, res, next) {
     res.render(`managerLogin`);
 });
 
-router.post('/managerLogin', passport.authenticate('local', { successRedirect: '/manager/member', failureRedirect: '/manager' }));
-// router.post('/managerLogin', passport.authenticate('local'), function(req, res){
+// router.post('/managerLogin', passport.authenticate('local', { successRedirect: '/manager/member', failureRedirect: '/manager' }));
+router.post('/managerLogin', passport.authenticate('local'), function(req, res){
     //  최종 관리자의 경우만 사용가능! - 배포시 작업 필요!
-    // if(req.body.username == "nandogas" || req.body.username == "nono1314") {
-    //     res.redirect('/manager/member');
-    // } else {
-    //     req.logOut();
-    //     res.redirect('/manager');
-    // }
-// });
+    if(req.body.username == "nandogas" || req.body.username == "nono1314") {
+        res.redirect('/manager/member');
+    } else {
+        req.logOut();
+        res.redirect('/manager');
+    }
+});
 
 router.get('/member', function(req, res, next) {
     if(req.user) {
@@ -127,26 +127,30 @@ router.post('/depositConfirm/:user_id', function(req, res, next) {
 });
 
 router.post('/depositDelete/:user_id', function(req, res, next) {
-    BuyInfo.findOne({_id:req.params.user_id}).exec((err, result)=> {
-        if(err) {
-            console.log(err);
-            next(err);
-        }
-        Account.update({_id: result.buyer}, {$pull: {buy_info: req.params.user_id}}).exec((err, result)=> {
+    if(req.user) {
+        BuyInfo.findOne({_id:req.params.user_id}).exec((err, result)=> {
             if(err) {
                 console.log(err);
                 next(err);
             }
-            BuyInfo.deleteOne({_id:req.params.user_id}).exec((err, result)=> {
+            Account.update({_id: result.buyer}, {$pull: {buy_info: req.params.user_id}}).exec((err, result)=> {
                 if(err) {
                     console.log(err);
                     next(err);
                 }
+                BuyInfo.deleteOne({_id:req.params.user_id}).exec((err, result)=> {
+                    if(err) {
+                        console.log(err);
+                        next(err);
+                    }
+                });
+                res.redirect("/salelist");
             });
-            res.redirect("/salelist");
+            
         });
-        
-    });
+    } else {
+        res.redirect(`/manager/`); 
+    }
 });
 
 
@@ -212,7 +216,7 @@ router.get('/addsales', function(req, res, next) {
 });
 
 router.get('/coinmenu', function(req, res, next){
-    // if(req.user) {
+    if(req.user) {
         TOTALCOININFO.find({}, function(err, data){
             if(err) {
                 console.log("ERROR 발생!");
@@ -221,9 +225,9 @@ router.get('/coinmenu', function(req, res, next){
                 res.render('coinInfo', {currentData: data, moment});
             }
         });
-    // } else {
-        // res.redirect(`/manager/`);
-    // }
+    } else {
+        res.redirect(`/manager/`);
+    }
 });
 
 router.get('/managermenu', function(req, res, next) {
