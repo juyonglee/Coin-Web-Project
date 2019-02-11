@@ -46,8 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  Passport Setup & Seesion 사용을 위한 express-session 추가
 app.use(require('express-session')({
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false})
+  resave: true,
+  cookie : {secure : false},
+  saveUninitialized: true})
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -80,10 +81,14 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 //  Passport Sesssion Message
 passport.serializeUser(function(user, done) {
+  console.log(serializeUser);
+  console.log(user);
   done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
+  console.log(deserializeUser);
+  console.log(user);
   done(null, user);
 });
 
