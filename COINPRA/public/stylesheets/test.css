@@ -205,10 +205,10 @@ nav ul li a {
 }
 
 #big-row{
-    height: 60vh;
-    width:50%; opacity: 0.9;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    height: 70vh;
+    width:55%; opacity: 0.9;
+    padding-top: 3%;
+    padding-bottom: 3%;
     background: #333333;
 }
 #table_img{
