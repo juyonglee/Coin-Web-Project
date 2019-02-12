@@ -218,8 +218,20 @@ nav ul li a {
     width: 50%;
 
 }
+#coin_text_t{
+    font-size: 30px;
+    font-weight: 400;
+    color: #eeeeee;
+}
 
 @media(max-width: 786px) {
+    #coin_text_t{
+        font-size: 20px;
+        font-weight: 300;
+        color: #eeeeee;
+
+    }
+
     #coin_button{
         width: 100%;
 
