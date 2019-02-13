@@ -2,11 +2,30 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
+var logger = require('morgan');
 
 //  Passport Setting 추가
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+
+//  Passport Configure
+passport.use(new LocalStrategy(function(username, password, done){
+  console.log("Passport Configure!!");
+  Account.findOne({username:username}, function(err, userObject){
+    if(err) {
+      console.log(err);
+      // return done(null, false, {message: "사용자가 존재하지 않습니다."});
+      return done(null, false);
+    }
+    if(userObject) {
+      const crypto = require('crypto');
+      crypto.pbkdf2(password, userObject.salt, 100000, 64, 'sha512', function(err, derivedKey) {
+        if(userObject.password != derivedKey.toString('base64')) return done(null, false);
+        return done(null, userObject);
+      });
+    }
+  });
+}));
 
 // MongoDB
 var mongoose = require('mongoose');
@@ -37,24 +56,18 @@ var app = express();
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/manager')]);
 app.set('view engine', 'ejs');
 
-// app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //  Passport Setup & Seesion 사용을 위한 express-session 추가
-// app.use(require('express-session')({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: false})
-// );
-app.use(require('express-session')({ 
-    secret: 'something', 
-    cookie: { 
-        secure: true
-}}));
-
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false})
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -66,24 +79,6 @@ app.use('/product', productRouter);
 app.use('/manager', managerRouter);
 app.use('/main', mainRouter);
 app.use('/salelist', salelist);
-
-//  Passport Configure
-passport.use(new LocalStrategy(function(username, password, done){
-  console.log("Passport Configure!!");
-  Account.findOne({username:username}, function(err, userObject){
-    if(err) {
-      console.log(err);
-      return done(null, false, {message: "사용자가 존재하지 않습니다."});
-    }
-    if(userObject) {
-      const crypto = require('crypto');
-      crypto.pbkdf2(password, userObject.salt, 100000, 64, 'sha512', function(err, derivedKey) {
-        if(userObject.password != derivedKey.toString('base64')) return done(null, false, {message: "Password가 일치하지 않습니다."});
-        return done(null, userObject);
-      });
-    }
-  });
-}));
 
 //  Passport Sesssion Message
 passport.serializeUser(function(user, done) {
