@@ -14,12 +14,10 @@ router.post('/signup', function(req, res, next) {
         crypto.pbkdf2(req.body.password, buf.toString('base64'), 100000, 64, 'sha512', function(err, derivedKey) {
         Account.create({ username : req.body.username, salt:buf.toString('base64'), phone: req.body.phoneNumber, password: derivedKey.toString('base64'), name: req.body.name}).then(
             function() {
-                //  저장이 완료된 경우 호출
                 passport.authenticate('local')(req, res, function () {
                     res.redirect('/');
                 });
             }, function(err) {
-                //  이미 가입된 경우 호출
                 res.redirect('/');
             });
         });
@@ -32,34 +30,6 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin' }));
-// router.post('/signin', passport.authenticate('local', { failureRedirect: '/account/signin' }), (req, res)=>{
-//     console.log("FUCK!!");
-//     console.log(req);
-//     console.log(res);
-// });
-
-// router.post('/signin', function(req, res, next) {
-//     passport.authenticate('local', function (error, user, info){
-
-//         // A error also means, an unsuccessful login attempt
-//         if(error) {
-//             console.error(error);
-//             console.log('Failed login:');
-//             // And do whatever you want here.
-//             return next(new Error('AuthenticationError'), req, res);
-//         }
-
-//         if (user === false) {
-//             // handle login error ...
-//             console.log('Failed login:');
-//             return next(new Error('AuthenticationError'), req, res);
-//         } else {
-//             // handle successful login ...
-//             console.log('Successful login:');
-//             res.redirect('/');
-//         }
-//     })(req, res, next);
-// });
 
 //  로그아웃에 관련된 Router (GET)
 router.get('/logout', function(req, res, next) {
@@ -69,10 +39,7 @@ router.get('/logout', function(req, res, next) {
             if (err) {
                 console.log(err)
             }
-            // res.send("<script>alert('Logout!'); location.href='/';</script>");
-        console.log("로그아웃됨");
         }
-
     );
     res.redirect('/');
 });
@@ -80,6 +47,13 @@ router.get('/logout', function(req, res, next) {
 // 관리자 로그아웃 Router (GET)
 router.get('/managerlogout', function(req, res, next) {
     req.logout();
+        // 로그아웃 하는 경우 세션 제거하기
+        req.session.destroy(function(err) {
+            if (err) {
+                console.log(err)
+            }
+        }
+    );
     res.redirect('/manager');
 });
 

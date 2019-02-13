@@ -4,9 +4,9 @@ var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.session.passport) {
-    // 1) 세션 존재하는 경우, user 넘기기 
-    res.render('test', {user: req.session.passport.user});
+  if(req.user) {
+    // 1) 세션 존재하는 경우, true 넘기기 
+    res.render('test', {user: true});
   }else {
     // 2) 세션 없는 경우, false 넘기기 
     res.render('test', {user: "false"});

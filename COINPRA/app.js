@@ -14,7 +14,7 @@ var mongoUrl = 'mongodb://localhost:27017/PROJECT';
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useCreateIndex: true});
 var db = mongoose.connection;
 db.once('open', function(){
-  console.log("MongoDB Connection!");
+  console.log("MongoDB No Problem!");
 });
 
 //  Model 추가
@@ -48,25 +48,6 @@ app.use(require('express-session')({
   resave: false,
   saveUninitialized: false})
 );
-// var session = require('express-session');
-// // app.use(session({ secret: 'keyboard cat' }));
-// var MongoDBStore = require('connect-mongodb-session')(session);
-// var store = new MongoDBStore({
-//   uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
-//   collection: 'mySessions'
-// });
-
- 
-// app.use(require('express-session')({
-//   secret: 'This is a secret',
-//   cookie: {
-//     maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-//   },
-//   store: store,
-//   resave: true,
-//   saveUninitialized: true
-// }));
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -103,12 +84,10 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 //  Passport Sesssion Message
 passport.serializeUser(function(user, done) {
-  console.log("serializeUser Configure!!");
   done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  console.log("deserializeUser Configure!!");
   done(null, user);
 });
 
