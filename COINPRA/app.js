@@ -2,7 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// var logger = require('morgan');
 
 //  Passport Setting 추가
 var passport = require('passport');
@@ -37,7 +37,7 @@ var app = express();
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/manager')]);
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
