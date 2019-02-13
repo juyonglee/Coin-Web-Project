@@ -16,7 +16,7 @@ var db = mongoose.connection;
 db.once('open', function(){
   console.log("MongoDB No Problem!");
   // var MemberInfo = require('./models/memberInfo');
-  // MemberInfo.create({invitation:1000000}, function(err, data){
+  // MemberInfo.create({invitation:1000000, name:'USER_COUNT'}, function(err, data){
   //   console.log(err);
   //   console.log(data);
   // });

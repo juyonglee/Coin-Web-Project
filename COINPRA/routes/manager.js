@@ -3,6 +3,7 @@ var router = express.Router();
 var Account = require('../models/account');
 var BuyInfo = require('../models/buyInfo');
 var TOTALCOININFO = require('../models/coinProduct');
+var MemberInfo = require('../models/memberInfo');
 var passport = require('passport');
 var moment = require('moment');
 //TODO: JUNGEE: 해당 페이지 넘기기
@@ -221,8 +222,13 @@ router.get('/coinmenu', function(req, res, next){
             if(err) {
                 console.log("ERROR 발생!");
             } else {
-                console.log(data);
-                res.render('coinInfo', {currentData: data, moment});
+                MemberInfo.find({}, function(err2, data2) {
+                    if(err) {
+                        console.log("ERROR 발생!");
+                    }else {
+                        res.render('coinInfo', {currentData: data, numberData: data2, moment});
+                    }
+                });
             }
         });
     } else {
@@ -254,6 +260,26 @@ router.post('/memberCheck', function(req, res, next) {
         res.redirect(`/manager/`);
     }
 });
+
+//  목표 회원 수 관리 변경
+router.post('/memberCheckConfirm', function(req, res, next) {
+    if(req.user) {
+        console.log(req.body.usercountInfo);
+        MemberInfo.update({name: 'USER_COUNT'}, {$set: {invitation: parseInt(req.body.usercountInfo)}}, function(err, result){
+            if(err) {
+                console.log("ERROR 발생!");
+                console.log(err);
+            } else {
+                console.log("Update: " + result);
+                res.redirect(`/manager/coinmenu`);
+            }
+        });
+    } else {
+        res.redirect(`/manager/`);
+    }
+});
+
+
 
 //  발행량 관리
 router.post('/coinCheck', function(req, res, next) {

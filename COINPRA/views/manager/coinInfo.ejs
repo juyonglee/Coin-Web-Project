@@ -154,10 +154,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <form action="/product/toxiCoinCreation" method="POST" id ="frm">
-                        <td id="userNUM">1000000</td>
-                        <td><input type="number" id="changeNumber"><input id="userCheck" type="button" value="확인"></td>
-                      </form>
+                        <td id="userNUM"><%= numberData[0]['invitation'] %></td>
+                        <form action="/manager/memberCheckConfirm" method="POST" id ="changUser">
+                        <td><input type="number" id="changeNumber" name= "usercountInfo"><input id="userCheck" type="button" value="확인"></td>
+                        </form>
                     </tbody>
                   </table>
                   
@@ -228,9 +228,10 @@
         $('#coinmenu').addClass('active');
 
         $("#userCheck").click(function(){
+          console.log($('#changeNumber').val());
           $.post('/manager/memberCheck', {changeUserInfo: $('#changeNumber').val()}, function(data, status) {
             if(data.result) {
-              document.getElementById('frm').submit();
+              document.getElementById('changUser').submit();
             } else {
               alert("기존 회원의 수보다 적게 입력하셨습니다.");
             }
