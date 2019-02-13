@@ -63,6 +63,7 @@ app.use('/salelist', salelist);
 
 //  Passport Configure
 passport.use(new LocalStrategy(function(username, password, done){
+  console.log("Passport Configure!!");
   Account.findOne({username:username}, function(err, userObject){
     if(err) {
       console.log(err);
@@ -80,10 +81,12 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 //  Passport Sesssion Message
 passport.serializeUser(function(user, done) {
+  console.log("serializeUser Configure!!");
   done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
+  console.log("deserializeUser Configure!!");
   done(null, user);
 });
 
