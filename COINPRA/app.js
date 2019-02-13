@@ -23,6 +23,8 @@ passport.use(new LocalStrategy(function(username, password, done){
         if(userObject.password != derivedKey.toString('base64')) return done(null, false);
         return done(null, userObject);
       });
+    } else {
+      return done(null, false);
     }
   });
 }));
