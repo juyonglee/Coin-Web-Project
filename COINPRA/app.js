@@ -44,11 +44,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //  Passport Setup & Seesion 사용을 위한 express-session 추가
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false})
-);
+// app.use(require('express-session')({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: false})
+// );
+app.use(require('express-session')({ 
+    secret: 'something', 
+    cookie: { 
+        secure: true
+}}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
