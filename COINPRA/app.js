@@ -5,29 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //  Passport Setting 추가
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
-//  Passport Configure
-passport.use(new LocalStrategy(function(username, password, done){
-  console.log("Passport Configure!!");
-  Account.findOne({username:username}, function(err, userObject){
-    if(err) {
-      console.log(err);
-      // return done(null, false, {message: "사용자가 존재하지 않습니다."});
-      return done(null, false);
-    }
-    if(userObject) {
-      const crypto = require('crypto');
-      crypto.pbkdf2(password, userObject.salt, 100000, 64, 'sha512', function(err, derivedKey) {
-        if(userObject.password != derivedKey.toString('base64')) return done(null, false);
-        return done(null, userObject);
-      });
-    } else {
-      return done(null, false);
-    }
-  });
-}));
+var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 
 // MongoDB
 var mongoose = require('mongoose');
@@ -70,6 +48,26 @@ app.use(require('express-session')({
   resave: false,
   saveUninitialized: false})
 );
+// var session = require('express-session');
+// // app.use(session({ secret: 'keyboard cat' }));
+// var MongoDBStore = require('connect-mongodb-session')(session);
+// var store = new MongoDBStore({
+//   uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+//   collection: 'mySessions'
+// });
+
+ 
+// app.use(require('express-session')({
+//   secret: 'This is a secret',
+//   cookie: {
+//     maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+//   },
+//   store: store,
+//   resave: true,
+//   saveUninitialized: true
+// }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -81,6 +79,27 @@ app.use('/product', productRouter);
 app.use('/manager', managerRouter);
 app.use('/main', mainRouter);
 app.use('/salelist', salelist);
+
+
+//  Passport Configure
+passport.use(new LocalStrategy(function(username, password, done){
+  console.log("Passport Configure!!");
+  Account.findOne({username:username}, function(err, userObject){
+    if(err) {
+      console.log(err);
+      return done(err);
+    }
+    if(userObject) {
+      const crypto = require('crypto');
+      crypto.pbkdf2(password, userObject.salt, 100000, 64, 'sha512', function(err, derivedKey) {
+        if(userObject.password != derivedKey.toString('base64')) return done(null, false, {message: "ID와 비밀번호를 확인해 주세요."});
+        return done(null, userObject);
+      });
+    } else {
+      return done(null, false, {message: "ID와 비밀번호를 확인해 주세요."});
+    }
+  });
+}));
 
 //  Passport Sesssion Message
 passport.serializeUser(function(user, done) {
