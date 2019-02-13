@@ -31,7 +31,12 @@ router.get('/signin', function(req, res, next) {
     res.render('signin', { title: 'Express' });
 });
 
-router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin' }));
+// router.post('/signin', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/signin' }));
+router.post('/signin', passport.authenticate('local', { failureRedirect: '/account/signin' }), (req, res)=>{
+    console.log("FUCK!!");
+    console.log(req);
+    console.log(res);
+});
 
 // router.post('/signin', function(req, res, next) {
 //     passport.authenticate('local', function (error, user, info){

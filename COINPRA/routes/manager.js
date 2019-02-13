@@ -239,4 +239,66 @@ router.get('/managermenu', function(req, res, next) {
     }
 });
 
+
+//  목표 회원 수 관리 
+router.post('/memberCheck', function(req, res, next) {
+    if(req.user) {
+        Account.find({}, function(err, data) {
+            if(parseInt(req.body.changeUserInfo)>= data.length) {
+                res.send({result: true});   
+            } else {
+                res.send({result: false});
+            }
+        });
+    } else {
+        res.redirect(`/manager/`);
+    }
+});
+
+//  발행량 관리
+router.post('/coinCheck', function(req, res, next) {
+    if(req.user) {
+        console.log(req.body.coinName);
+        TOTALCOININFO.find({coin_name: req.body.coinName}, function(err, coinInfo){
+            if(err) {
+                console.log("ERROR 발생!");
+            } else {
+                // console.log(coinInfo[0].total_count);
+                console.log(coinInfo[0].selling_count);
+                if(req.body.coinAmount >=coinInfo[0].selling_count) {
+                    res.send({result: true});   
+                } else {
+                    res.send({result: false});   
+                }
+            }
+        });
+    } else {
+        res.redirect(`/manager/`);
+    }
+});
+
+router.post('/coinAmountUpdate', function(req, res, next) {
+    if(req.user) {
+        var name;
+        if(req.body.TOXI != undefined) {
+            name= "TOXI";
+        } else {
+            name= "PLU";
+        }
+        console.log("Current Coin is " + name);
+        console.log(req.body[name]);
+        TOTALCOININFO.update({coin_name: name}, {$set: {total_count:req.body[name]}}, function(err, result){
+            if(err) {
+                console.log("ERROR 발생!");
+            } else {
+                console.log("Update: " + result);
+                res.redirect(`/manager/coinmenu`);
+            }
+        });
+    } else {
+        res.redirect(`/manager/`);
+    }
+});
+
+
 module.exports = router;
