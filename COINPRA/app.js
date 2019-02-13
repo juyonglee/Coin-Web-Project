@@ -15,11 +15,11 @@ mongoose.connect(mongoUrl, {useNewUrlParser: true, useCreateIndex: true});
 var db = mongoose.connection;
 db.once('open', function(){
   console.log("MongoDB No Problem!");
-  var MemberInfo = require('./models/memberInfo');
-  MemberInfo.create({invitation:1000000}, function(err, data){
-    console.log(err);
-    console.log(data);
-  });
+  // var MemberInfo = require('./models/memberInfo');
+  // MemberInfo.create({invitation:1000000}, function(err, data){
+  //   console.log(err);
+  //   console.log(data);
+  // });
 });
 
 //  Model 추가
